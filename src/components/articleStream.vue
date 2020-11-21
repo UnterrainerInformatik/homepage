@@ -12,7 +12,7 @@
         v-html="item.title"
       ></v-card-title>
       <v-card-text class="text-justify" v-html="item.value"></v-card-text>
-      <v-card-actions v-if="item.buttons">
+      <v-card-actions class="ma-0 pa-0" v-if="item.buttons">
         <v-container>
           <v-btn
             class="mb-1"

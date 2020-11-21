@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-layout class="justify-center mb-4">
-      <v-card class="pa-4" min-width="400" max-width="800px" color="secondary darken-1">
+      <v-card class="pa-0 pt-4 px-4 ma-0" min-width="400" max-width="800px" color="secondary darken-1">
         <v-card-title class="justify-center text-center" v-html="title"></v-card-title>
         <v-card-text class="justify-center text-center" v-html="description"></v-card-text>
-        <v-card-actions v-if="buttons">
+        <v-card-actions class="ma-0 pa-0" v-if="buttons">
           <v-container>
           <v-btn
             class="mb-1"
