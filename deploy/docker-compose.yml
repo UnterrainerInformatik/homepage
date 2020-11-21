@@ -1,0 +1,25 @@
+version: "3"
+services:
+  web:
+    image: gufalcon/homepage:latest
+    restart: always
+    ports:
+      - "1780:80"
+      - "17443:443"
+    environment:
+      - HTTP_PORT=80
+      - HTTP_HOST=0.0.0.0
+    volumes:
+      - "/app/deploy/homepage/nginx.conf:/etc/nginx/nginx.conf"
+    command: ["nginx", "-g", "daemon off;"]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.homepage.port=80"
+      - "traefik.homepage.backend=homepage"
+      - "traefik.homepage.frontend.rule=Host:unterrainer.info"
+      - "traefik.homepage.frontend.entryPoints=http,https"
+
+networks:
+  default:
+    external:
+      name: proxy_default
