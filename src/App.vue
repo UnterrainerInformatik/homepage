@@ -25,7 +25,7 @@
                     fab
                     x-small
                     @click="setLanguage('en')"
-                    :class="$i18n.locale == 'en' ? 'secondary' : ''"
+                    :class="$i18n.locale == 'en' ? ' secondary' : ''"
                     ><img
                       src="@/assets/flag-ukus.png"
                       alt="en"
@@ -37,7 +37,7 @@
                     x-small
                     @click="setLanguage('de')"
                     :class="
-                      'mr-2 ml-4' + ($i18n.locale == ' de' ? 'secondary' : '')
+                      'mr-2 ml-4' + ($i18n.locale == 'de' ? ' secondary' : '')
                     "
                     ><img
                       src="@/assets/flag-atde.png"
@@ -159,6 +159,7 @@ export default {
   methods: {
     setLanguage (language) {
       this.$i18n.locale = language
+      localStorage.setItem('language', language)
     },
     goto (destination) {
       if (this.$router.currentRoute.path !== destination) {
@@ -168,8 +169,15 @@ export default {
     ...mapActions('gui', {
       toggleDrawerVisible: 'toggleDrawerVisible'
     })
-  }
+  },
 
+  mounted () {
+    let lang = localStorage.getItem('language')
+    if (lang == null || lang === undefined) {
+      lang = 'en'
+    }
+    this.$i18n.locale = lang
+  }
 }
 </script>
 
