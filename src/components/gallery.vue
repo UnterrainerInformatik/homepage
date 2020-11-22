@@ -13,16 +13,11 @@
       </v-card>
     </v-layout>
     <div v-if="data" class="d-flex flex-wrap row justify-center">
-      <v-flex
-        align-center
-        v-for="(item, index) in data"
-        :key="index"
-        class="ma-2 pa-0"
-      >
+      <v-flex align-center v-for="(item, i) in data" :key="i" class="ma-2 pa-0">
         <v-card
           width="200px"
           class="secondary justify-center text-center align-center flex-grow-1 flex-shrink-1 ma-0 pa-0"
-          @click="() => showImg(index)"
+          @click="() => showImage(item)"
         >
           <v-img
             v-if="item.img"
@@ -41,6 +36,73 @@
         </v-card>
       </v-flex>
     </div>
+
+    <v-dialog
+      v-model="visible"
+      width="unset"
+      max-width="90vw"
+      max-height="95vh"
+    >
+      <v-btn
+        class="mt-9 primary"
+        dark
+        icon
+        fab
+        absolute
+        small
+        top
+        right
+        @click.native="closeImage()"
+      >
+        <v-icon>close</v-icon>
+      </v-btn>
+      <v-btn
+        class="primary"
+        dark
+        icon
+        fab
+        absolute
+        right
+        @click.native="nextImage()"
+        :style="{ top: '50%', transform: 'translateY(-50%)' }"
+      >
+        <v-icon>navigate_next</v-icon>
+      </v-btn>
+      <v-btn
+        class="primary"
+        dark
+        icon
+        fab
+        absolute
+        left
+        @click.native="prevImage()"
+        :style="{ top: '50%', transform: 'translateY(-50%)' }"
+      >
+        <v-icon>navigate_before</v-icon>
+      </v-btn>
+
+      <v-card
+        class="secondary justify-center text-center align-center flex-grow-1 flex-shrink-1 ma-0 pa-0"
+        @click="() => closeImage()"
+      >
+        <v-card-title
+          class="justify-center align-center text-center ma-0 pa-0"
+          v-if="currentItem.title"
+          v-html="currentItem.title"
+        ></v-card-title>
+        <v-img
+          class="ma-0 pa-0"
+          max-height="80vh"
+          :src="currentItem.img"
+          contain
+        ></v-img>
+        <v-card-text
+          class="justify-center align-center text-center ma-0 pa-0"
+          v-if="currentItem.description"
+          v-html="currentItem.description"
+        ></v-card-text>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -51,7 +113,20 @@ export default {
 
   props: {
     title: {},
-    descriptionBaseString: {}
+    startWith: {},
+    endWith: {},
+    imageBaseString: {},
+    imageBaseEnd: {},
+    thumbBaseString: {},
+    thumbBaseEnd: {},
+    titleLocalizationBaseString: {},
+    descriptionLocalizationBaseString: {},
+    descriptionBaseString: {},
+    padZerosLeftUpTo: {},
+    padThumbs: {},
+    padImages: {},
+    padTitleLocalization: {},
+    padDescriptionLocalization: {}
   },
 
   components: {
@@ -60,7 +135,7 @@ export default {
   data: () => ({
     data: [],
     visible: false,
-    index: 0
+    currentItem: {}
   }),
 
   watch: {},
@@ -70,39 +145,60 @@ export default {
 
   methods: {
     getData () {
-      this.data.push({
-        thumb: 'https://files.unterrainer.info/Throbax_Galleries/Intro1/thumb001.png',
-        img: 'https://files.unterrainer.info/Throbax_Galleries/Intro1/img001.png',
-        title: 'title 1'
-      })
-      this.data.push({
-        thumb: 'https://files.unterrainer.info/Throbax_Galleries/Intro1/thumb002.png',
-        img: 'https://files.unterrainer.info/Throbax_Galleries/Intro1/img002.png'
-      })
-      this.data.push({
-        thumb: 'https://files.unterrainer.info/Throbax_Galleries/Intro1/thumb003.png',
-        img: 'https://files.unterrainer.info/Throbax_Galleries/Intro1/img003.png',
-        title: 'title 3'
-      })
-      this.data.push({
-        thumb: 'https://files.unterrainer.info/Throbax_Galleries/Intro1/thumb004.png',
-        img: 'https://files.unterrainer.info/Throbax_Galleries/Intro1/img004.png',
-        title: 'title 4'
-      })
-      this.data.push({
-        thumb: 'https://files.unterrainer.info/Throbax_Galleries/Intro1/thumb005.png',
-        img: 'https://files.unterrainer.info/Throbax_Galleries/Intro1/img005.png',
-        title: 'title f ai i8wf hwuorhgf erg 5'
-      })
-      this.data.push({
-        thumb: 'https://files.unterrainer.info/Throbax_Galleries/Intro1/thumb006.png',
-        img: 'https://files.unterrainer.info/Throbax_Galleries/Intro1/img006.png',
-        title: 'title 6'
-      })
+      let index = 0
+      for (let i = this.startWith; i <= this.endWith; i++) {
+        let n = i
+        if (this.padZerosLeftUpTo) {
+          n = ('0000000000' + i).slice(-this.padZerosLeftUpTo)
+        }
+
+        let lookupValue = this.titleLocalizationBaseString + (this.padTitleLocalization.toLowerCase() === 'true' ? n : i)
+        let title = this.$t(lookupValue)
+        if (!this.$te(lookupValue)) {
+          title = undefined
+        }
+
+        lookupValue = this.descriptionLocalizationBaseString + (this.padDescriptionLocalization.toLowerCase() === 'true' ? n : i)
+        let description = this.$t(lookupValue)
+        if (!this.$te(lookupValue)) {
+          description = undefined
+        }
+
+        const img = this.imageBaseString + (this.padImages.toLowerCase() === 'true' ? n : i) + this.imageBaseEnd
+        const thumb = this.thumbBaseString + (this.padThumbs.toLowerCase() === 'true' ? n : i) + this.thumbBaseEnd
+
+        this.data.push({
+          index,
+          thumb,
+          img,
+          title,
+          description
+        })
+        index++
+      }
     },
-    showImg (index) {
-      this.index = index
+    showImage (item) {
+      this.currentItem = item
       this.visible = true
+    },
+    closeImage () {
+      this.visible = false
+    },
+    nextImage () {
+      let i = this.currentItem.index
+      i++
+      if (i >= this.data.length) {
+        i = 0
+      }
+      this.currentItem = this.data[i]
+    },
+    prevImage () {
+      let i = this.currentItem.index
+      i--
+      if (i < 0) {
+        i = this.data.length - 1
+      }
+      this.currentItem = this.data[i]
     },
     handleHide () {
       this.visible = false

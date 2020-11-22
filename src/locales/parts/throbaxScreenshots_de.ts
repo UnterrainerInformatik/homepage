@@ -3,6 +3,7 @@ export default {
   title: 'Throbax TD Bildschirmfotos',
   gallery: 'Ein paar Schnappschüsse aus einer früheren Version',
   gallery1: 'Splash Screen',
+  description1: 'This is our splash screen since we got rid of the splash video.',
   gallery2: 'Hauptmenü',
   gallery3: 'Einstellungen',
   gallery4: 'Graphik-Einstellungen',

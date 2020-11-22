@@ -6,7 +6,19 @@
     ></Title>
     <Gallery
     :title="$t('throbaxScreenshots.gallery')"
-    descriptionBaseString="gallery"
+    startWith=1
+    endWith=23
+    imageBaseString="https://files.unterrainer.info/Throbax_Galleries/Intro1/img"
+    imageBaseEnd=".png"
+    thumbBaseString="https://files.unterrainer.info/Throbax_Galleries/Intro1/thumb"
+    thumbBaseEnd=".png"
+    titleLocalizationBaseString="throbaxScreenshots.gallery"
+    descriptionLocalizationBaseString="throbaxScreenshots.description"
+    padZerosLeftUpTo=3
+    padThumbs=true
+    padImages=true
+    padTitleLocalization=false
+    padDescriptionLocalization=false
     ></Gallery>
   </div>
 </template>
