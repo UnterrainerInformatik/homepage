@@ -1,15 +1,26 @@
 <template>
-  <div>
-    throbax screenshots
+  <div class="home">
+    <Title
+      :title="$t('throbaxScreenshots.title')"
+      :description="$t('throbaxScreenshots.description')"
+    ></Title>
+    <Gallery
+    :title="$t('throbaxScreenshots.gallery')"
+    descriptionBaseString="gallery"
+    ></Gallery>
   </div>
 </template>
 
 <script lang="js">
+import Title from '@/components/title.vue'
+import Gallery from '@/components/gallery.vue'
 
 export default {
   name: 'throbaxScreenshots',
 
   components: {
+    Title,
+    Gallery
   },
 
   data: () => ({
