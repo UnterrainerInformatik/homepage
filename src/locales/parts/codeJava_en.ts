@@ -1,21 +1,4 @@
 export default {
-    _Description: 'Access our private Stash repositories we use as release-master (read-only) <a href=\'<!--#AdrStash-->\' target=\'_blank\' class=\'btn btn-default btn-xs\'>here</a>.',
-    _PageTitle: 'Free Java Libraries',
-    _Title: 'Free Java Libraries',
-    'Point1.Title': 'java',
-    'Point1.Value': 'This is the base-project on Github providing an overview over the included libraries.<p><a href=\'<!--#AdrGithub-->/java\' target=\'_blank\' class=\'btn btn-xs btn-block btn-primary\'>Java on Github</a>',
-    'Point2.Title': 'java/splitstopwatch',
-    'Point2.Value': 'This class implements a stopWatch.<p>Additionally to the normal stopWatch-functionality it may be used to debug out split-times as well. It measures the split-times and keeps track of the overall times in a variable.<p><a href=\'<!--#AdrGithub-->/java/tree/develop/SplitStopWatch\' target=\'_blank\' class=\'btn btn-xs btn-block btn-primary\'>SplitStopWatch on Github</a>',
-    'Point3.Title': 'java/utils',
-    'Point3.Value': 'This jar contains various utility-classes used throughout our programs.<p><a href=\'<!--#AdrGithub-->/java/tree/develop/Utils\' target=\'_blank\' class=\'btn btn-xs btn-block btn-primary\'>Utils on Github</a>',
-    'Point4.Title': 'java/console-progressbar',
-    'Point4.Value': 'The console-progressbar is designed to show progress when writing long-running console-applications.<p><a href=\'<!--#AdrGithub-->/java/tree/develop/console-progressbar\' target=\'_blank\' class=\'btn btn-xs btn-block btn-primary\'>Console-Progressbar on Github</a>',
-    'Point5.Title': 'java/csv-tools',
-    'Point5.Value': 'This library should ease dealing with (admittedly legacy) CSV files.<p><a href=\'<!--#AdrGithub-->/java/tree/develop/csv-tools\' target=\'_blank\' class=\'btn btn-xs btn-block btn-primary\'>CSV-Tools on Github</a>',
-    'Point6.Title': 'java/data-structures',
-    'Point6.Value': 'This jar contains several classes designed to do common tasks.<p><a href=\'<!--#AdrGithub-->/java/tree/develop/data-structures\' target=\'_blank\' class=\'btn btn-xs btn-block btn-primary\'>Data-Structures on Github</a>',
-    'Point7.Title': 'java/nullannotations',
-    'Point7.Value': 'This project contains an implementation of annotations that may be used as a replacement for the (more common) Eclipse null-annotations.<p><a href=\'<!--#AdrGithub-->/java/tree/develop/nullannotations\' target=\'_blank\' class=\'btn btn-xs btn-block btn-primary\'>NullAnnotations on Github</a>',
-    'Point8.Title': 'bulkmakemkv',
-    'Point8.Value': 'MakeMKV is a program that extracts MKV-files from DVD/BR-rips that are saved as an image (ISO) or a DVD/BR in general (a mounted one, preferably).<p>The program eases the task of bulk-converting those rips from various directories into various other directories. It checks if those MKV-files exist for existing rips, converting only missing ones on startup.<p>The program is used by starting the jar-file (located in the target directory of the project). The program is configurated using the file config.properties which it will expect to find next to itself (the same directory or on the path).<p><a href=\'<!--#AdrGithub-->/splitstopwatch\' target=\'_blank\' class=\'btn btn-xs btn-block btn-primary\'>BulkMakeMKV on Github</a>'
-  }
+  description: 'Here is a summary of our libraries on GitHub.',
+  title: 'Free Java Libraries'
+}

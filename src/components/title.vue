@@ -48,7 +48,6 @@ export default {
   },
 
   data: () => ({
-    navMenu: false
   }),
 
   computed: {

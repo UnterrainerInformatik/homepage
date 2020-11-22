@@ -1,7 +1,7 @@
 <template>
   <div v-if="items" class="d-flex flex-wrap justify-center">
     <v-card
-      class="grey lighten-4 ma-2 flex-grow-1 flex-shrink-1"
+      class="grey lighten-4 ma-2 flex-grow-1 flex-shrink-1 d-flex flex-column"
       v-for="(item, i) in items"
       :key="i"
       min-width="400px"
@@ -12,6 +12,7 @@
         v-html="item.title"
       ></v-card-title>
       <v-card-text class="text-justify" v-html="item.value"></v-card-text>
+      <v-spacer v-if="item.buttons"></v-spacer>
       <v-card-actions class="ma-0 pa-0" v-if="item.buttons">
         <v-container>
           <v-btn
@@ -22,6 +23,7 @@
             small
             block
             :href="btn.href"
+            :target="btn.target ? btn.target : '_blank'"
           >
             <v-icon v-if="btn.icon">{{ btn.icon }}</v-icon> {{ btn.text }}
           </v-btn>
@@ -41,7 +43,6 @@ export default {
   },
 
   data: () => ({
-    navMenu: false
   }),
 
   computed: {

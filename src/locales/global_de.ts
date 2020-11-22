@@ -1,8 +1,5 @@
 export default {
-  galleryDownload: 'herunterladen',
-  galleryNext: 'weiter',
-  galleryPrevious: 'zurück',
-  gallerySlideshow: 'Diashow',
+  gotoGithub: 'GitHub Seite öffnen',
   tab: {
     about: 'Über uns',
     coding: 'Programmierung',

@@ -1,11 +1,4 @@
 export default {
-    _Description: '<a href=\'<!--#AdrStash-->\' target=\'_blank\' class=\'btn btn-default btn-xs\'>Hier</a> hast Du Zugriff auf unsere private Stash Repositories, die wir als release-master benutzen (nur lesen).',
-    _PageTitle: 'Freie C# Libraries',
-    _Title: 'Freie C# Libraries',
-    'Point1.Title': 'SplitStopWatch',
-    'Point1.Value': 'Diese Klasse implementiert eine Stopuhr.<p>Zusätzlich zu dieser Funktionalität kann sie auch dazu benutzt werden Zwischenzeiten auszugeben und sie merkt sich auch die Gesamt-Zeit in einer Variable.<p>Sie hat ein Feld \'isActive\', das default-mässig auf true gesetzt ist. Wenn es auf false gesetzt wird werden alle Aufrufe an die Stopuhr gleich in der ersten Zeile des Aufrufs mittels eines if-Statements abgebrochen. Dies bietet die Annehmlichkeit logging-code in production-code lassen zu können indem man nur ein Flag ändert.<p><a href=\'<!--#AdrGithub-->/splitstopwatch\' target=\'_blank\' class=\'btn btn-xs btn-block btn-primary\'>SplitStopWatch auf Github</a>',
-    'Point2.Title': 'LockFreeQueue',
-    'Point2.Value': 'Diese Klasse implementiert eine nicht-blockierente FIFO-Queue.<p>Es wurde kein Monitor oder Lock-Statement verwendet. Der Pseudo-Lock wurde mittels Memory-Fences der Interlocked-Library erreicht.<p><a href=\'<!--#AdrGithub-->/lockfreequeue\' target=\'_blank\' class=\'btn btn-xs btn-block btn-primary\'>LockFreeQueue auf Github</a>',
-    'Point3.Title': 'ThreadPool',
-    'Point3.Value': 'Diese Klasse implementiert einen Thread-Pool.<p>Sie pooled alle Work-Items, die leider Klassen sein müssen, und verwendet sie wieder. Erst am Ende wird zusammengeräumt.<p>Der Grund warum wir diesen Code brauchten, war weil wir für gewisse Dinge die .NET Parallels Library nicht nehmen konnten. Wir wollten Methoden-Aufrufe parallel ausführen und in einen Pool werfen, die nicht dieselbe Signatur haben (unterschiedliche Parameter, Parameteranzahl und Rückgabewerte).<p>Du kannst sie alle in diesen ThreadPool schmeißen und ihn starten.<p><a href=\'<!--#AdrGithub-->/threadpool\' target=\'_blank\' class=\'btn btn-xs btn-block btn-primary\'>ThreadPool auf Github</a>'
-  }
+  description: 'Hier ist eine Zusammenfassung unserer Libraries auf GitHub.',
+  title: 'Freie C# Libraries'
+}
