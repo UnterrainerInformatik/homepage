@@ -9,7 +9,7 @@ export default {
         {
           text: 'Basic GIT Tutorial',
           href: 'https://www.atlassian.com/git/tutorials',
-          color: 'accent'
+          color: 'primary'
         }
       ]
     },

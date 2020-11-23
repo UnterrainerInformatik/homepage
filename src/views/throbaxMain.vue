@@ -40,6 +40,7 @@ export default {
 
 .v-card__text,
 .v-card__title {
-  word-break: normal;
+  word-break: break-word;
+  word-wrap: break-word;
 }
 </style>

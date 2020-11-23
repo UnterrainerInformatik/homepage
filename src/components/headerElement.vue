@@ -40,7 +40,7 @@
 <script lang="js">
 
 export default {
-  name: 'header',
+  name: 'headerElement',
 
   props: {
   },
@@ -55,16 +55,8 @@ export default {
     setLanguage (language) {
       this.$i18n.locale = language
       localStorage.setItem('language', language)
+      location.reload()
     }
   }
 }
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-
-.v-card__text,
-.v-card__title {
-  word-break: normal;
-}
-</style>

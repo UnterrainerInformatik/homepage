@@ -3,9 +3,8 @@
     <v-layout class="justify-center mb-4">
       <v-card
         class="pa-0 pt-4 px-4 ma-0"
-        min-width="400px"
-        max-width="800px"
-        color="secondary darken-1"
+        width="100%"
+        :color="'secondary' + (sub != undefined && sub.toLowerCase() === 'true' ? '' : ' darken-1')"
       >
         <v-card-title
           class="justify-center text-center"
@@ -32,7 +31,6 @@
         </v-card-actions>
       </v-card>
     </v-layout>
-    <v-divider class="mb-4"></v-divider>
   </div>
 </template>
 
@@ -44,7 +42,8 @@ export default {
   props: {
     title: {},
     description: {},
-    buttons: {}
+    buttons: {},
+    sub: {}
   },
 
   data: () => ({
@@ -57,12 +56,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-@import 'index.scss';
-
-.v-card__text,
-.v-card__title {
-  word-break: normal;
-}
-</style>

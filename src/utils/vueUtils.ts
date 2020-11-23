@@ -1,7 +1,7 @@
 import vuetify from '@/plugins/vuetify'
 
 export default {
-  adaptiveColumns: function (array) {
+  adaptive: function (array) {
     switch (vuetify.framework.breakpoint.name) {
       case 'xs':
         return array[0]

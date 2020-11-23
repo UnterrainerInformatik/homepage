@@ -4,7 +4,7 @@ export default {
   description: 'Weil wir auch etwas an die Community zurückgeben wollen, haben wir ein paar von unseren Libraries befreit und stellen sie Euch zur Verfügung.',
   title: 'Freier Code für freie Menschen',
   points: [{
-    title: 'MS-PL Lizenz',
+    title: 'Unlicense',
     value: `${''}Das bedeutet, dass Du alles damit machen kannst, inklusive kommerzieller Verwertung oder Wiederverkauf, so lange Du uns nicht verklagst, falls etwas schief gehen sollte.`
   }, {
     title: 'Freie Java Libraries',
@@ -19,6 +19,16 @@ export default {
       {
         text: 'Maven Search',
         href: variables.adrMavenSearch,
+        color: 'accent'
+      }
+    ]
+  }, {
+    title: 'Öffentlicher Nuget Eintrag',
+    value: `${''}Unsere C# Libraries haben natürlich einen öffentlichen Eintrag auf Nuget, den Du verwenden kannst um den Code schnell in Dein Projekt einzubinden.`,
+    buttons: [
+      {
+        text: 'Nuget Search',
+        href: variables.adrNugetSearch,
         color: 'accent'
       }
     ]

@@ -4,7 +4,7 @@ export default {
   description: `${''}In order to give back, we've freed some of our libraries and put them at your disposal.`,
   title: 'Free Code For Free People',
   points: [{
-    title: 'MS-PL License',
+    title: 'Unlicense',
     value: `${''}Essentially you may do anything you want with it. We won't ask.<p>You can do anything with the code including commercial applications or re-selling as long as you don't blame us if something goes awry.`
   }, {
     title: 'Free Java Libraries',
@@ -19,6 +19,16 @@ export default {
       {
         text: 'Maven Search',
         href: variables.adrMavenSearch,
+        color: 'accent'
+      }
+    ]
+  }, {
+    title: 'Public Nuget Listings',
+    value: `${''}Our C# libraries have a public Nuget repository each you may use to integrate them into your own code.`,
+    buttons: [
+      {
+        text: 'Nuget Search',
+        href: variables.adrNugetSearch,
         color: 'accent'
       }
     ]

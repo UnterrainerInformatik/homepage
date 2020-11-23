@@ -1,10 +1,10 @@
 <template>
-  <div class="home">
+  <div>
     <Title
-      :title="$t('git.title')"
-      :description="$t('git.description')"
+      :title="$t('coding.title')"
+      :description="$t('coding.description')"
     ></Title>
-    <ArticleStream :items="$t('git.gitList')"> </ArticleStream>
+    <ArticleStream :items="$t('coding.infoList')"> </ArticleStream>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import Title from '@/components/title.vue'
 import ArticleStream from '@/components/articleStream.vue'
 
 export default {
-  name: 'gitCheatSheet',
+  name: 'coding',
 
   components: {
     Title,
@@ -30,14 +30,14 @@ export default {
 
   methods: {
   }
+
 }
 </script>
 
 <style lang="scss">
 @import 'index.scss';
 
-.v-card__text,
-.v-card__title {
+.v-card__text, .v-card__title {
   word-break: break-word;
   word-wrap: break-word;
 }

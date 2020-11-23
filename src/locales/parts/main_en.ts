@@ -10,11 +10,25 @@ export default {
     },
     {
       title: 'Consulting<br/>Softwareengineering and Projectmanagement',
-      value: `${''}We have been developing various products on many different platforms and have been trusted with the planning and execution of projects of various scopes.<br />We want to share that experience with you. (Limited to Austria and neighboring countries)`
+      value: `${''}We have been developing various products on many different platforms and have been trusted with the planning and execution of projects of various scopes.<br />We want to share that experience with you. (Limited to Austria and neighboring countries)`,
+      buttons: [
+        {
+          text: 'contact us',
+          href: 'mailto:office@unterrainer.info?subject=Business%20Inquiry',
+          color: 'primary'
+        }
+      ]
     },
     {
       title: 'Consulting<br/>Hardware Infrastructure',
-      value: `${''}We have good connections and experience when it comes to administrate hardware-environments as well. Over the years we tended to multiple platforms and sizes of offices and the necessary servers as administrators. If you are struggling to tame your server-environment or simply have some problems with your hardware, a report that we can create together, often is the best first step to regaining control (and it is very inexpensive since the creation process doesn't take up much time). (Limited to Austria and neighboring countries)`
+      value: `${''}We have good connections and experience when it comes to administrate hardware-environments as well. Over the years we tended to multiple platforms and sizes of offices and the necessary servers as administrators. If you are struggling to tame your server-environment or simply have some problems with your hardware, a report that we can create together, often is the best first step to regaining control (and it is very inexpensive since the creation process doesn't take up much time). (Limited to Austria and neighboring countries)`,
+      buttons: [
+        {
+          text: 'contact us',
+          href: 'mailto:office@unterrainer.info?subject=Business%20Inquiry',
+          color: 'primary'
+        }
+      ]
     },
     {
       title: 'STEAM Greenlight SUCCESS!',
@@ -33,11 +47,11 @@ export default {
     },
     {
       title: 'Free C# Libraries',
-      value: `${''}During our time as game-developers we've accumulated quite some code that we are prepared to share with you.<p><b>For free!</b><br />Under the MS-PL license which means that you can do anything with the code including commercial applications or re-selling as long as you don't blame us if something goes awry.<p>Feel free to take a look at our 'Free Code' section in the navigation bar.`
+      value: `${''}During our time as game-developers we've accumulated quite some code that we are prepared to share with you.<p><b>For free!</b><br />Under the unlicense which means that you can do anything with the code including commercial applications or re-selling as long as you don't blame us if something goes awry.<p>Feel free to take a look at our 'Free Code' section in the navigation bar.`
     },
     {
       title: 'Free Java Libraries',
-      value: `${''}Over time we've used and written many Java libraries. Some of them are here at your disposal.<p><b>For free!</b><br />Under the MS-PL license which means that you can do anything with the code including commercial applications or re-selling as long as you don't blame us if something goes awry.<p>Feel free to take a look at our 'Free Code' section in the navigation bar.`
+      value: `${''}Over time we've used and written many Java libraries. Some of them are here at your disposal.<p><b>For free!</b><br />Under the unlicense which means that you can do anything with the code including commercial applications or re-selling as long as you don't blame us if something goes awry.<p>Feel free to take a look at our 'Free Code' section in the navigation bar.`
     }
   ]
 }

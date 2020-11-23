@@ -3,49 +3,69 @@
     <v-app>
       <v-main>
         <v-container fluid>
-          <Header></Header>
-          <v-card
-            class="ma-0 pa-0 mt-3 mb-5 elevation-2"
-            dense
-            v-cloak
-            color="secondary"
-          >
-            <v-layout>
-              <v-flex>
-                <MenuItem
-                  v-for="(item, i) in menuItems"
-                  :key="i"
-                  class="mr-2"
-                  :item="item"
-                ></MenuItem>
-              </v-flex>
-              <MenuItem
-                class="justify-end text-right"
-                :item="{
-                  text: $t('global.tab.about'),
-                  to: '/app/about',
-                  icon: 'help_outline'
-                }"
-              ></MenuItem>
-            </v-layout>
-          </v-card>
-          <router-view>Loading...</router-view>
+          <HeaderElement></HeaderElement>
         </v-container>
+        <v-row>
+          <v-col
+            class="hidden-sm-and-down"
+            :cols="vueUtils.adaptive([0, 0, 1, 2, 3])"
+          >
+          </v-col>
+          <v-col :cols="vueUtils.adaptive([12, 12, 10, 8, 6])">
+            <v-container fluid>
+              <v-card
+                class="ma-0 pa-0 mt-3 mb-7 elevation-2"
+                dense
+                v-cloak
+                color="secondary"
+              >
+                <v-layout>
+                  <v-flex>
+                    <MenuItem
+                      v-for="(item, i) in menuItems"
+                      :key="i"
+                      class="mr-2"
+                      :item="item"
+                    ></MenuItem>
+                  </v-flex>
+                  <MenuItem
+                    class="justify-end text-right"
+                    :item="{
+                      text: $t('global.tab.about'),
+                      to: '/app/about',
+                      icon: 'help_outline'
+                    }"
+                  ></MenuItem>
+                </v-layout>
+              </v-card>
+              <router-view>Loading...</router-view>
+              <FooterElement></FooterElement>
+            </v-container>
+          </v-col>
+          <v-col
+            class="hidden-sm-and-down"
+            :cols="vueUtils.adaptive([0, 0, 1, 2, 3])"
+          >
+          </v-col>
+        </v-row>
       </v-main>
     </v-app>
   </div>
 </template>
 
 <script lang="js">
+import vueUtils from '@/utils/vueUtils'
 import { mapGetters } from 'vuex'
-import Header from '@/components/header.vue'
+import HeaderElement from '@/components/headerElement.vue'
+import FooterElement from '@/components/footerElement.vue'
 import MenuItem from '@/components/menuItem.vue'
 
 export default {
   name: 'Main',
 
   components: {
-    Header,
+    HeaderElement,
+    FooterElement,
     MenuItem
   },
 
@@ -54,13 +74,11 @@ export default {
       x: 0,
       y: 0
     },
-    menuItems: []
+    menuItems: [],
+    vueUtils: vueUtils
   }),
 
   computed: {
-    ...mapGetters({
-      lastMdAndUp: 'lastMdAndUp'
-    }),
     ...mapGetters('gui/tooltips', {
       tooltips: 'tooltips',
       openDelay: 'openDelay'
@@ -108,6 +126,11 @@ export default {
           text: this.$t('global.tab.code.explanation'),
           to: '/app/code/explanation',
           icon: 'house'
+        },
+        {
+          text: this.$t('global.tab.code.coding'),
+          to: '/app/code/coding',
+          icon: 'accessibility'
         },
         {
           text: this.$t('global.tab.code.git'),

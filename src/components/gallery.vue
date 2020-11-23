@@ -1,17 +1,6 @@
 <template>
   <div>
-    <v-layout v-if="title" class="justify-center mb-4">
-      <v-card
-        class="pa-0 ma-0"
-        min-width="400px"
-        width="100%"
-        color="secondary darken-1"
-      >
-        <v-card-title class="justify-center text-center">{{
-          title
-        }}</v-card-title>
-      </v-card>
-    </v-layout>
+    <Title :title="title" :description="description" sub="true"></Title>
     <div v-if="data" class="d-flex flex-wrap row justify-center">
       <v-flex align-center v-for="(item, i) in data" :key="i" class="ma-2 pa-0">
         <v-card
@@ -107,12 +96,14 @@
 </template>
 
 <script lang="js">
+import Title from '@/components/title.vue'
 
 export default {
   name: 'gallery',
 
   props: {
     title: {},
+    description: {},
     startWith: {},
     endWith: {},
     imageBaseString: {},
@@ -130,6 +121,7 @@ export default {
   },
 
   components: {
+    Title
   },
 
   data: () => ({

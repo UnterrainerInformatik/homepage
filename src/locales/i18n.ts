@@ -1,7 +1,7 @@
 import variables from '@/locales/variables'
 
-import mainEn from '@/locales/main_en'
 import globalEn from '@/locales/global_en'
+import mainEn from '@/locales/parts/main_en'
 import aboutEn from '@/locales/parts/about_en'
 import throbaxEn from '@/locales/parts/throbax_en'
 import throbaxScreenshotsEn from '@/locales/parts/throbaxScreenshots_en'
@@ -11,8 +11,8 @@ import codeCEn from '@/locales/parts/codeC_en'
 import codeJavaEn from '@/locales/parts/codeJava_en'
 import gitEn from '@/locales/parts/git_en'
 
-import mainDe from '@/locales/main_de'
 import globalDe from '@/locales/global_de'
+import mainDe from '@/locales/parts/main_de'
 import aboutDe from '@/locales/parts/about_de'
 import throbaxDe from '@/locales/parts/throbax_de'
 import throbaxScreenshotsDe from '@/locales/parts/throbaxScreenshots_de'

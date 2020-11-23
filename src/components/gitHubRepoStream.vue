@@ -4,12 +4,12 @@
         class="grey lighten-4 ma-2 flex-grow-1 flex-shrink-1 d-flex flex-column"
         v-for="(repo, i) in repos"
         :key="i"
-        min-width="400px"
-        max-width="400px"
+        min-width="285px"
+        max-width="285px"
       >
         <v-card-title
           class="secondary justify-center text-center"
-          v-html="repo.name"
+          v-html="repo.fixedName"
         ></v-card-title>
         <v-card-text class="text-justify" v-html="repo.description"></v-card-text>
         <v-spacer></v-spacer>
@@ -104,10 +104,15 @@ export default {
           }
         }
 
+        repo.fixedName = repo.name
+        if (repo.name.toLowerCase().startsWith('java-') || repo.name.toLowerCase().startsWith('java_')) {
+          repo.fixedName = repo.name.substring(5)
+        }
+
         repos.push(repo)
       }
       this.repos = repos
-      console.log(repos)
+      // console.log(repos)
     })
   }
 }

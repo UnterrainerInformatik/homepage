@@ -1,11 +1,15 @@
 <template>
   <div v-if="items" class="d-flex flex-wrap justify-center">
     <v-card
+      style="cursor: url(/cursor_mail.png), auto;"
       class="grey lighten-4 ma-2 flex-grow-1 flex-shrink-1 d-flex flex-column"
       v-for="(item, i) in items"
       :key="i"
-      min-width="400px"
-      max-width="400px"
+      min-width="285px"
+      max-width="285px"
+      :href="`mailto:${item.mail}?subject=${$t(
+        'about.personalEmailSubject'
+      )}&body=${$t('about.personalEmailBody')}`"
     >
       <v-card-title class="secondary justify-center text-center"
         ><span>{{ item.title }}</span>

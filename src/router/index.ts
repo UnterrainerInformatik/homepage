@@ -35,6 +35,11 @@ const routes: Array<RouteConfig> = [
     component: () => import('../views/gitCheatSheet.vue')
   },
   {
+    path: '/app/code/coding',
+    name: 'coding',
+    component: () => import('../views/coding.vue')
+  },
+  {
     path: '/app/code/cs',
     name: 'code_cs',
     component: () => import('../views/codeCs.vue')

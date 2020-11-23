@@ -1,14 +1,14 @@
 <template>
   <div v-if="items" class="d-flex flex-wrap justify-center">
     <v-card
-      class="grey lighten-4 ma-2 flex-grow-1 flex-shrink-1 d-flex flex-column"
+      class="ma-2 flex-grow-1 flex-shrink-1 d-flex flex-column grey lighten-4"
       v-for="(item, i) in items"
       :key="i"
-      min-width="400px"
-      max-width="400px"
+      min-width="285px"
+      max-width="285px"
     >
       <v-card-title
-        class="secondary justify-center text-center"
+        :class="'justify-center text-center' + (item.sub ? ' blue-grey lighten-5' : ' secondary')"
         v-html="item.title"
       ></v-card-title>
       <v-card-text class="text-justify" v-html="item.value"></v-card-text>
