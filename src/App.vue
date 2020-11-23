@@ -3,52 +3,7 @@
     <v-app>
       <v-main>
         <v-container fluid>
-          <v-row class="ma-0 pa-0">
-            <v-col class="ma-0 pa-0">
-              <v-container class="ma-0 pa-0">
-                <img
-                  class="ma-0 pa-0 mt-7"
-                  width="400"
-                  alt="unterrainer-informatik-logo"
-                  src="@/assets/logo.png"
-              /></v-container>
-            </v-col>
-            <v-col class="ma-0 pa-0">
-              <v-row class="ma-0 pa-0">
-                <v-col class="ma-0 pa-0 text-right">
-                  <span v-html="$t('resource.linkBarUInf32x32')"></span>
-                </v-col>
-              </v-row>
-              <v-row class="ma-0 pa-0 text-right">
-                <v-col class="ma-0 pa-0">
-                  <v-btn
-                    fab
-                    x-small
-                    @click="setLanguage('en')"
-                    :class="$i18n.locale == 'en' ? ' secondary' : ''"
-                    ><img
-                      src="@/assets/flag-ukus.png"
-                      alt="en"
-                      class="ma-0 pa-0"
-                    />
-                  </v-btn>
-                  <v-btn
-                    fab
-                    x-small
-                    @click="setLanguage('de')"
-                    :class="
-                      'mr-2 ml-4' + ($i18n.locale == 'de' ? ' secondary' : '')
-                    "
-                    ><img
-                      src="@/assets/flag-atde.png"
-                      alt="de"
-                      class="ma-0 pa-0"
-                    />
-                  </v-btn>
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
+          <Header></Header>
           <v-card
             class="ma-0 pa-0 mt-3 mb-5 elevation-2"
             dense
@@ -58,62 +13,10 @@
             <v-layout>
               <v-flex>
                 <MenuItem
+                  v-for="(item, i) in menuItems"
+                  :key="i"
                   class="mr-2"
-                  :item="{
-                    text: $t('global.tab.home'),
-                    to: '/app/home',
-                    icon: 'home'
-                  }"
-                ></MenuItem>
-                <MenuItem
-                  class="mr-2"
-                  :item="{
-                    text: $t('global.tab.throbax.title'),
-                    startsWith: '/app/throbax/',
-                    icon: 'videogame_asset',
-                    subItems: [
-                      {
-                        text: $t('global.tab.throbax.index'),
-                        to: '/app/throbax/main',
-                        icon: 'layers'
-                      },
-                      {
-                        text: $t('global.tab.throbax.screenShots'),
-                        to: '/app/throbax/screenshots',
-                        icon: 'insert_photo'
-                      }
-                    ]
-                  }"
-                ></MenuItem>
-                <MenuItem
-                  class="mr-2"
-                  :item="{
-                    text: $t('global.tab.code.title'),
-                    startsWith: '/app/code/',
-                    icon: 'code',
-                    subItems: [
-                      {
-                        text: $t('global.tab.code.explanation'),
-                        to: '/app/code/explanation',
-                        icon: 'house'
-                      },
-                      {
-                        text: $t('global.tab.code.git'),
-                        to: '/app/code/git',
-                        icon: 'keyboard'
-                      },
-                      {
-                        text: $t('global.tab.code.cs'),
-                        to: '/app/code/cs',
-                        icon: 'closed_caption'
-                      },
-                      {
-                        text: $t('global.tab.code.java'),
-                        to: '/app/code/java',
-                        icon: 'free_breakfast'
-                      }
-                    ]
-                  }"
+                  :item="item"
                 ></MenuItem>
               </v-flex>
               <MenuItem
@@ -134,13 +37,15 @@
 </template>
 
 <script lang="js">
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
+import Header from '@/components/header.vue'
 import MenuItem from '@/components/menuItem.vue'
 
 export default {
   name: 'Main',
 
   components: {
+    Header,
     MenuItem
   },
 
@@ -148,7 +53,8 @@ export default {
     windowSize: {
       x: 0,
       y: 0
-    }
+    },
+    menuItems: []
   }),
 
   computed: {
@@ -162,18 +68,6 @@ export default {
   },
 
   methods: {
-    setLanguage (language) {
-      this.$i18n.locale = language
-      localStorage.setItem('language', language)
-    },
-    goto (destination) {
-      if (this.$router.currentRoute.path !== destination) {
-        this.$router.push(destination)
-      }
-    },
-    ...mapActions('gui', {
-      toggleDrawerVisible: 'toggleDrawerVisible'
-    })
   },
 
   mounted () {
@@ -182,6 +76,56 @@ export default {
       lang = 'en'
     }
     this.$i18n.locale = lang
+
+    this.menuItems.push({
+      text: this.$t('global.tab.home'),
+      to: '/app/home',
+      icon: 'home'
+    })
+    this.menuItems.push({
+      text: this.$t('global.tab.throbax.title'),
+      startsWith: '/app/throbax/',
+      icon: 'videogame_asset',
+      subItems: [
+        {
+          text: this.$t('global.tab.throbax.index'),
+          to: '/app/throbax/main',
+          icon: 'layers'
+        },
+        {
+          text: this.$t('global.tab.throbax.screenShots'),
+          to: '/app/throbax/screenshots',
+          icon: 'insert_photo'
+        }
+      ]
+    })
+    this.menuItems.push({
+      text: this.$t('global.tab.code.title'),
+      startsWith: '/app/code/',
+      icon: 'code',
+      subItems: [
+        {
+          text: this.$t('global.tab.code.explanation'),
+          to: '/app/code/explanation',
+          icon: 'house'
+        },
+        {
+          text: this.$t('global.tab.code.git'),
+          to: '/app/code/git',
+          icon: 'keyboard'
+        },
+        {
+          text: this.$t('global.tab.code.cs'),
+          to: '/app/code/cs',
+          icon: 'closed_caption'
+        },
+        {
+          text: this.$t('global.tab.code.java'),
+          to: '/app/code/java',
+          icon: 'free_breakfast'
+        }
+      ]
+    })
   }
 }
 </script>
