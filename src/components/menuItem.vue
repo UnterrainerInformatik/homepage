@@ -29,7 +29,7 @@
         active-class="v-btn--active"
         color="grey lighten-2"
         :class="
-            (item.endsWith && $route.path.endsWith(item.endsWith)) ||
+          (item.endsWith && $route.path.endsWith(item.endsWith)) ||
           (item.startsWith && $route.path.startsWith(item.startsWith))
             ? ' v-btn--active'
             : ''
@@ -42,7 +42,10 @@
     <v-list>
       <div v-for="(subItem, i) in item.subItems" :key="i">
         <v-list-item :to="subItem.to">
-          <v-list-item-title>{{ subItem.text }} <v-icon v-if="subItem.icon" right>{{ subItem.icon }}</v-icon></v-list-item-title>
+          <v-list-item-title
+            ><v-icon v-if="subItem.icon" left>{{ subItem.icon }}</v-icon>
+            {{ subItem.text }}</v-list-item-title
+          >
         </v-list-item>
       </div>
     </v-list>

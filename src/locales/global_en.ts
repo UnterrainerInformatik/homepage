@@ -12,6 +12,7 @@ export default {
     code: {
       title: 'Free Code',
       explanation: 'Code Home',
+      git: 'Git Cheat-Sheet',
       cs: 'Free C# Libraries',
       java: 'Free Java Libraries'
     }

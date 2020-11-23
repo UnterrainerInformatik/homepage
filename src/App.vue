@@ -98,6 +98,11 @@
                         icon: 'house'
                       },
                       {
+                        text: $t('global.tab.code.git'),
+                        to: '/app/code/git',
+                        icon: 'keyboard'
+                      },
+                      {
                         text: $t('global.tab.code.cs'),
                         to: '/app/code/cs',
                         icon: 'closed_caption'

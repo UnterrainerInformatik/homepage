@@ -9,6 +9,7 @@ import codingEn from '@/locales/parts/coding_en'
 import codeEn from '@/locales/parts/code_en'
 import codeCEn from '@/locales/parts/codeC_en'
 import codeJavaEn from '@/locales/parts/codeJava_en'
+import gitEn from '@/locales/parts/git_en'
 
 import mainDe from '@/locales/main_de'
 import globalDe from '@/locales/global_de'
@@ -19,6 +20,7 @@ import codingDe from '@/locales/parts/coding_de'
 import codeDe from '@/locales/parts/code_de'
 import codeCDe from '@/locales/parts/codeC_de'
 import codeJavaDe from '@/locales/parts/codeJava_de'
+import gitDe from '@/locales/parts/git_de'
 
 function Lang (defaults, options = {}) {
   return Object.assign({}, defaults, options)
@@ -34,6 +36,7 @@ const en = {
   code: codeEn,
   codeC: codeCEn,
   codeJava: codeJavaEn,
+  git: gitEn,
   about: aboutEn
 }
 
@@ -47,6 +50,7 @@ const de = Lang(en, {
   code: codeDe,
   codeC: codeCDe,
   codeJava: codeJavaDe,
+  git: gitDe,
   about: aboutDe
 })
 
