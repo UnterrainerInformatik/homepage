@@ -9,6 +9,10 @@ const routes: Array<RouteConfig> = [
     redirect: '/app/home'
   },
   {
+    path: '/Home',
+    redirect: '/app/home'
+  },
+  {
     path: '/app/home',
     alias: '/',
     name: 'home',

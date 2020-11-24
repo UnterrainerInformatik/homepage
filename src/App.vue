@@ -61,7 +61,7 @@ import FooterElement from '@/components/footerElement.vue'
 import MenuItem from '@/components/menuItem.vue'
 
 export default {
-  name: 'Main',
+  name: 'App',
 
   components: {
     HeaderElement,
