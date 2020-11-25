@@ -90,4 +90,24 @@ export default {
   word-break: break-word;
   word-wrap: break-word;
 }
+
+code {
+  font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
+    'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
+    'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier,
+    monospace !important;
+  color: #202070 !important;
+  background-color: #d1d1d1 !important;
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  margin: 0px !important;
+  font-size: 75% !important;
+  text-align: left !important;
+  text-justify: none !important;
+  white-space: pre-wrap;
+  margin: 0px !important;
+  padding: 0px !important;
+}
 </style>
