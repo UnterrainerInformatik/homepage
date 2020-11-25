@@ -110,4 +110,10 @@ code {
   margin: 0px !important;
   padding: 0px !important;
 }
+pre {
+  text-align: left !important;
+  white-space: pre-wrap;
+  margin: 0px !important;
+  padding: 0px !important;
+}
 </style>
