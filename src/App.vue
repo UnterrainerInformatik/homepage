@@ -17,7 +17,7 @@
                 class="ma-0 pa-0 mt-3 mb-7 elevation-2"
                 dense
                 v-cloak
-                color="secondary"
+                color="blue-grey lighten-5"
               >
                 <v-layout>
                   <v-flex>
