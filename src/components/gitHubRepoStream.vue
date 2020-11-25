@@ -1,34 +1,43 @@
 <template>
   <div v-if="repos" class="d-flex flex-wrap justify-center">
-      <v-card
-        class="grey lighten-4 ma-2 flex-grow-1 flex-shrink-1 d-flex flex-column"
-        v-for="(repo, i) in repos"
-        :key="i"
-        min-width="285px"
-        max-width="285px"
-      >
-        <v-card-title
-          class="secondary justify-center text-center"
-          v-html="repo.fixedName"
-        ></v-card-title>
-        <v-card-text class="text-justify" v-html="repo.description"></v-card-text>
-        <v-spacer></v-spacer>
-        <v-card-actions class="ma-0 pa-0">
-          <v-container>
-            <v-btn
-              class="mb-1"
-              color="primary"
-              small
-              block
-              :href="repo.html_url"
-              target="_blank"
-            >
-              {{ $t('global.gotoGithub') }}
-            </v-btn>
-          </v-container>
-        </v-card-actions>
-      </v-card>
-    </div>
+
+    <v-progress-circular
+      indeterminate
+      v-if="isLoading"
+      size="70"
+    ></v-progress-circular>
+
+    <v-card
+      v-else
+      class="grey lighten-4 ma-2 flex-grow-1 flex-shrink-1 d-flex flex-column"
+      v-for="(repo, i) in repos"
+      :key="i"
+      min-width="285px"
+      max-width="285px"
+    >
+      <v-card-title
+        class="secondary justify-center text-center"
+        v-html="repo.fixedName"
+      ></v-card-title>
+      <v-card-text class="text-justify" v-html="repo.description"></v-card-text>
+      <v-spacer></v-spacer>
+      <v-card-actions class="ma-0 pa-0">
+        <v-container>
+          <v-btn
+            class="mb-1"
+            color="primary"
+            small
+            block
+            :href="repo.html_url"
+            target="_blank"
+          >
+            {{ $t('global.gotoGithub') }}
+          </v-btn>
+        </v-container>
+      </v-card-actions>
+    </v-card>
+
+  </div>
 </template>
 
 <script lang="js">
@@ -46,7 +55,8 @@ export default {
   data: () => ({
     repos: {},
     topics: [],
-    notTopics: []
+    notTopics: [],
+    isLoading: true
   }),
 
   computed: {
@@ -110,6 +120,7 @@ export default {
         }
 
         repos.push(repo)
+        this.isLoading = false
       }
       this.repos = repos
       // console.log(repos)

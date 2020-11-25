@@ -1,5 +1,5 @@
 <template>
-  <v-footer padless>
+  <v-footer padless color="transparent">
     <v-card flat tile width="100%" height="50px" class="text-center mt-8">
       <v-card-text
         class="grey--text"
