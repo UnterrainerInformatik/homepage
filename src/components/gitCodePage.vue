@@ -4,7 +4,7 @@
       class="ma-2 flex-grow-1 flex-shrink-1 d-flex flex-column grey lighten-4"
     >
       <v-card-text>
-        <Prism :language="lang">
+        <Prism class="gitcode" :language="lang">
           {{ content }}
         </Prism>
       </v-card-text>
@@ -78,7 +78,22 @@ export default {
 <style lang="scss">
 // Theme goes here:
 @import 'prismjs/themes/prism-okaidia';
-code {
-  all: unset !important;
+.gitcode {
+  all: revert import !important;
+  white-space: pre-wrap !important;
+  line-height: 50%;
+  * {
+    all: revert;
+    word-break: break-all !important;
+    white-space: pre-wrap !important;
+  }
+
+  pre {
+    background-color: #505050;
+  }
+  .token.operator {
+    background-color: unset !important;
+  }
 }
+
 </style>

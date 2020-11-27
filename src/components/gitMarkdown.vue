@@ -2,7 +2,7 @@
   <div v-if="content">
     <v-card dark
       ><v-card-text>
-        <div v-html="'' + content"></div> </v-card-text
+        <div class="markdown" v-html="'' + content"></div> </v-card-text
     ></v-card>
   </div>
 </template>
@@ -81,15 +81,22 @@ export default {
 // Theme goes here:
 @import 'prismjs/themes/prism-okaidia';
 
-code {
-  all: unset !important;
+.markdown {
+  all: revert import !important;
+  white-space: pre-wrap !important;
+  line-height: 50%;
+  * {
+    all: revert;
+    word-break: break-all !important;
+    white-space: pre-wrap !important;
+  }
+
+  pre {
+    background-color: #505050;
+  }
+  .token.operator {
+    background-color: unset !important;
+  }
 }
 
-.token.operator {
-  background-color: unset !important;
-}
-
-pre {
-  white-space: pre-wrap;
-}
 </style>
