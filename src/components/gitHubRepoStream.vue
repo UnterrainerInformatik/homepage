@@ -1,6 +1,8 @@
 <template>
-  <div v-if="repos" class="d-flex flex-wrap justify-center">
-
+  <div
+    v-if="repos"
+    class="d-flex flex-wrap justify-center"
+  >
     <v-progress-circular
       indeterminate
       v-if="isLoading"
@@ -36,7 +38,6 @@
         </v-container>
       </v-card-actions>
     </v-card>
-
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div v-if="items" class="d-flex flex-wrap justify-center">
     <v-card
-      style="cursor: url(/cursor_mail.png), auto;"
+      style="cursor: url(/cursor_mail.png), auto"
       class="grey lighten-4 ma-2 flex-grow-1 flex-shrink-1 d-flex flex-column"
       v-for="(item, i) in items"
       :key="i"

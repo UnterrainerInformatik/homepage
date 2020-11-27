@@ -8,7 +8,10 @@
       max-width="285px"
     >
       <v-card-title
-        :class="'justify-center text-center' + (item.sub ? ' blue-grey lighten-5' : ' secondary')"
+        :class="
+          'justify-center text-center' +
+          (item.sub ? ' blue-grey lighten-5' : ' secondary')
+        "
         v-html="item.title"
       ></v-card-title>
       <v-card-text class="text-justify" v-html="item.value"></v-card-text>
