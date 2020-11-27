@@ -54,6 +54,11 @@ const routes: Array<RouteConfig> = [
     component: () => import('../views/codeJava.vue')
   },
   {
+    path: '/app/cheatSheets',
+    name: 'cheat_sheets',
+    component: () => import('../views/cheatSheets.vue')
+  },
+  {
     path: '/app/about',
     name: 'about',
     component: () => import('../views/about.vue')

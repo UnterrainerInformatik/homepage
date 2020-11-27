@@ -1,44 +1,38 @@
 <template>
-  <v-container fluid>
-    <v-card
-      class="ma-0 pa-0 mt-3 mb-7 elevation-2"
-      dense
-      v-cloak
-      color="blue-grey lighten-5"
-    >
-      <v-layout>
-        <v-flex>
-          <MenuItem
-            v-for="(item, i) in menuItems"
-            :key="i"
-            class="mr-2"
-            :item="item"
-          ></MenuItem>
-        </v-flex>
+  <v-card
+    class="ma-0 pa-0 mt-3 mb-7 elevation-2"
+    dense
+    v-cloak
+    color="blue-grey lighten-5"
+  >
+    <v-layout>
+      <v-flex>
         <MenuItem
-          class="justify-end text-right"
-          :item="{
-            text: $t('global.tab.about'),
-            to: '/app/about',
-            icon: 'help_outline'
-          }"
+          v-for="(item, i) in menuItems"
+          :key="i"
+          class="mr-2"
+          :item="item"
         ></MenuItem>
-      </v-layout>
-    </v-card>
-    <router-view>Loading...</router-view>
-    <FooterElement></FooterElement>
-  </v-container>
+      </v-flex>
+      <MenuItem
+        class="justify-end text-right"
+        :item="{
+          text: $t('global.tab.about'),
+          to: '/app/about',
+          icon: 'help_outline'
+        }"
+      ></MenuItem>
+    </v-layout>
+  </v-card>
 </template>
 
 <script lang="js">
-import FooterElement from '@/components/footerElement.vue'
 import MenuItem from '@/components/menuItem.vue'
 
 export default {
   name: 'impress',
 
   components: {
-    FooterElement,
     MenuItem
   },
 
@@ -107,6 +101,48 @@ export default {
           text: this.$t('global.tab.code.java'),
           to: '/app/code/java',
           icon: 'free_breakfast'
+        }
+      ]
+    })
+    this.menuItems.push({
+      text: this.$t('global.tab.cheatSheets'),
+      startsWith: '/app/cheatSheets/',
+      icon: 'emoji_objects',
+      subItems: [
+        {
+          text: this.$t('cheatSheets.sheets.linux.title'),
+          to: '/app/cheatSheets?p=linux&l=linux_cheat_sheet.md',
+          icon: 'featured_play_list'
+        },
+        {
+          text: this.$t('cheatSheets.sheets.ssh.title'),
+          to: '/app/cheatSheets?p=ssh&l=ssh_cheat_sheet.md',
+          icon: 'featured_play_list'
+        },
+        {
+          text: this.$t('cheatSheets.sheets.ssl.title'),
+          to: '/app/cheatSheets?p=ssl&l=ssl_cheat_sheet.md',
+          icon: 'featured_play_list'
+        },
+        {
+          text: this.$t('cheatSheets.sheets.gpg.title'),
+          to: '/app/cheatSheets?p=gpg&l=gpg_cheat_sheet.md',
+          icon: 'featured_play_list'
+        },
+        {
+          text: this.$t('cheatSheets.sheets.letsEncrypt.title'),
+          to: '/app/cheatSheets?p=letsEncrypt&l=letsencrypt_cheat_sheet.md',
+          icon: 'featured_play_list'
+        },
+        {
+          text: this.$t('cheatSheets.sheets.hibernation.title'),
+          to: '/app/cheatSheets?p=hibernation&l=scheduled_hibernation.md',
+          icon: 'featured_play_list'
+        },
+        {
+          text: this.$t('cheatSheets.sheets.vnc.title'),
+          to: '/app/cheatSheets?p=vnc&l=vnc_cheat_sheet.md',
+          icon: 'featured_play_list'
         }
       ]
     })

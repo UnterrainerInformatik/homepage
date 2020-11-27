@@ -16,6 +16,7 @@ export default {
       git: 'Git Cheat-Sheet',
       cs: 'Free C# Libraries',
       java: 'Free Java Libraries'
-    }
+    },
+    cheatSheets: 'CheatSheets'
   }
 }

@@ -12,7 +12,11 @@
           >
           </v-col>
           <v-col :cols="vueUtils.adaptive([12, 12, 10, 8, 6])">
-            <MenuBar></MenuBar>
+            <v-container fluid>
+              <MenuBar></MenuBar>
+              <router-view :key="$route.fullPath">Loading...</router-view>
+              <FooterElement></FooterElement>
+            </v-container>
           </v-col>
           <v-col
             class="hidden-sm-and-down"
@@ -30,13 +34,15 @@ import vueUtils from '@/utils/vueUtils'
 import { mapGetters } from 'vuex'
 import MenuBar from '@/components/menuBar.vue'
 import HeaderElement from '@/components/headerElement.vue'
+import FooterElement from '@/components/footerElement.vue'
 
 export default {
   name: 'App',
 
   components: {
     MenuBar,
-    HeaderElement
+    HeaderElement,
+    FooterElement
   },
 
   data: () => ({
@@ -89,31 +95,5 @@ export default {
 .v-card__title {
   word-break: break-word;
   word-wrap: break-word;
-}
-
-code {
-  font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
-    'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
-    'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier,
-    monospace !important;
-  color: #202070 !important;
-  background-color: #d1d1d1 !important;
-  padding-top: 1px !important;
-  padding-bottom: 1px !important;
-  padding-left: 2px !important;
-  padding-right: 2px !important;
-  margin: 0px !important;
-  font-size: 75% !important;
-  text-align: left !important;
-  text-justify: none !important;
-  white-space: pre-wrap;
-  margin: 0px !important;
-  padding: 0px !important;
-}
-pre {
-  text-align: left !important;
-  white-space: pre-wrap;
-  margin: 0px !important;
-  padding: 0px !important;
 }
 </style>
