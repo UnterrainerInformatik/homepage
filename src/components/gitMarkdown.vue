@@ -1,8 +1,8 @@
 <template>
   <div v-if="content">
-    <v-card dark
+    <v-card
       ><v-card-text>
-        <div class="markdown" v-html="'' + content"></div> </v-card-text
+        <div class="markdown-body" v-html="'' + content"></div> </v-card-text
     ></v-card>
   </div>
 </template>
@@ -79,35 +79,10 @@ export default {
 
 <style lang="scss">
 // Theme goes here:
-@import 'prismjs/themes/prism-okaidia';
+@import '@/styles/gitHubMarkdown.scss';
+@import 'prismjs/themes/prism';
 
-.markdown {
-  all: revert import !important;
-  white-space: pre-wrap !important;
-  line-height: 70%;
-  * {
-    all: revert;
-    word-break: break-word !important;
-    white-space: pre-wrap !important;
-  }
-
-  code {
-    word-break: break-all !important;
-  }
-
-  p {
-    line-height: 100% !important;
-    margin: 5px !important;
-    margin-top: 2px !important;
-    margin-bottom: 2px !important;
-  }
-
-  pre {
-    background-color: #505050;
-  }
-  .token.operator {
-    background-color: unset !important;
-  }
+.markdown-body pre {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace !important;
 }
-
 </style>

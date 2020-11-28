@@ -79,7 +79,6 @@ export default {
 // Theme goes here:
 @import 'prismjs/themes/prism-okaidia';
 .gitcode {
-  all: revert import !important;
   white-space: pre-wrap !important;
   // line-height: 50%;
   * {
