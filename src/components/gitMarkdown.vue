@@ -84,11 +84,22 @@ export default {
 .markdown {
   all: revert import !important;
   white-space: pre-wrap !important;
-  line-height: 50%;
+  line-height: 70%;
   * {
     all: revert;
-    word-break: break-all !important;
+    word-break: break-word !important;
     white-space: pre-wrap !important;
+  }
+
+  code {
+    word-break: break-all !important;
+  }
+
+  p {
+    line-height: 100% !important;
+    margin: 5px !important;
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
   }
 
   pre {

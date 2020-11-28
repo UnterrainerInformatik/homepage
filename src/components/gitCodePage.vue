@@ -81,7 +81,7 @@ export default {
 .gitcode {
   all: revert import !important;
   white-space: pre-wrap !important;
-  line-height: 50%;
+  // line-height: 50%;
   * {
     all: revert;
     word-break: break-all !important;
