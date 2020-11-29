@@ -11,7 +11,7 @@
       :title="$t(`cheatSheets.sheets.${name}.title`)"
       :description="$t(`cheatSheets.sheets.${name}.description`)"
     ></Title>
-    <GitMarkdown
+    <GitRawFile
       v-if="link"
       :key="link"
       user="UnterrainerInformatik"
@@ -19,20 +19,20 @@
       project="cheatsheets"
       :file="link"
     >
-    </GitMarkdown>
+    </GitRawFile>
   </div>
 </template>
 
 <script lang="js">
 import Title from '@/components/title.vue'
-import GitMarkdown from '@/components/gitMarkdown.vue'
+import GitRawFile from '@/components/gitRawFile.vue'
 
 export default {
   name: 'gitCheatSheet',
 
   components: {
     Title,
-    GitMarkdown
+    GitRawFile
   },
 
   data: () => ({

@@ -1,16 +1,27 @@
 <template>
-  <div v-if="content">
-    <v-card
-      ><v-card-text>
-        <div class="markdown-body" v-html="'' + parse(content)"></div> </v-card-text
-    ></v-card>
-  </div>
+  <v-card v-if="!inline" class="secondary ma-1 my-2 pa-0"
+    ><v-card-text class="ma-1 pa-0 px-1">
+      <Prism
+        style="width: unset !important"
+        v-if="content && language"
+        :language="language"
+        class="markdown-body"
+        >{{ content }}</Prism
+      >
+    </v-card-text>
+  </v-card>
+  <v-chip v-else label x-small class="elevation-1 secondary ma-0 mx-1 pa-0 px-1" style="font-size: 1em !important;">
+    <Prism
+      v-if="content && language"
+      :language="language"
+      class="markdown-body"
+      >{{ content }}</Prism
+    >
+  </v-chip>
 </template>
 
 <script lang="js">
-import marked from 'marked'
-import prism from 'prismjs'
-
+import Prism from 'vue-prism-component'
 // Language imports go here:
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-c'
@@ -29,13 +40,16 @@ import 'prismjs/components/prism-toml'
 import 'prismjs/components/prism-yaml'
 
 export default {
-  name: 'gitMarkdown',
+  name: 'codeElement',
 
   props: {
-    content: {}
+    content: {},
+    language: {},
+    inline: {}
   },
 
   components: {
+    Prism
   },
 
   data: () => ({
@@ -45,26 +59,26 @@ export default {
   },
 
   methods: {
-    parse (value) {
-      marked.setOptions({
-        highlight: function (code, lang) {
-          return prism.highlight(code, prism.languages[lang || 'markup'], lang || 'markup')
-        }
-      })
-      return marked.parse(value)
-    }
   }
 }
 </script>
 
 <style lang="scss">
 // Theme goes here:
-@import '@/styles/gitHubMarkdown.scss';
 @import 'prismjs/themes/prism';
 
-.markdown-body pre, code {
+.markdown-body {
+  background-color: transparent !important;
+
+  * {
+    background-color: transparent !important;
+  }
+}
+
+.markdown-body pre,
+code {
   word-break: break-word !important;
   white-space: pre-wrap !important;
-  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace !important;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace !important;
 }
 </style>

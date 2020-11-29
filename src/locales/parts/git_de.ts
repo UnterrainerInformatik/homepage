@@ -4,7 +4,55 @@ export default {
   gitList: [
     {
       title: 'GIT-Kommandos',
-      value: `${''}Oft benutzte GIT-Kommandos:<br/><br /><pre><code>git config --global user.name &lt;username&gt;</code></pre><pre><code>git config --global user.email &lt;email&gt;</code></pre><pre><code>git add --all</code></pre><pre><code>git push origin dev</code></pre><pre><code>git status</code></pre><pre><code>git branch</code></pre><pre><code>git checkout</code></pre><pre><code>git clone</code></pre><pre><code>git pull</code></pre><pre><code>git stash</code></pre><pre><code>git stash pop</code></pre>`,
+      value: [
+        {
+          text: `${''}Oft benutzte GIT-Kommandos:`
+        },
+        {
+          code: `${''}git config --global user.name <username>`,
+          language: 'git'
+        },
+        {
+          code: `${''}git config --global user.email <email>`,
+          language: 'git'
+        },
+        {
+          code: `${''}git add --all`,
+          language: 'git'
+        },
+        {
+          code: `${''}git push origin dev`,
+          language: 'git'
+        },
+        {
+          code: `${''}git status`,
+          language: 'git'
+        },
+        {
+          code: `${''}git branch`,
+          language: 'git'
+        },
+        {
+          code: `${''}git checkout`,
+          language: 'git'
+        },
+        {
+          code: `${''}git clone`,
+          language: 'git'
+        },
+        {
+          code: `${''}git pull`,
+          language: 'git'
+        },
+        {
+          code: `${''}git stash`,
+          language: 'git'
+        },
+        {
+          code: `${''}git stash pop`,
+          language: 'git'
+        }
+      ],
       buttons: [
         {
           text: 'Basic GIT Tutorial',
@@ -15,7 +63,28 @@ export default {
     },
     {
       title: 'Code das erste Mal auschecken',
-      value: `${''}<ol><li>Gehe im Windows-Datei-Explorer auf das Verzeichnis auf deiner lokalen Maschine, das Du als Zielverzeichnis für das Projekt ausgewählt hast, das Du gleich auschecken willst.</li><li>Schreibe <br /><pre><code>git clone &lt;URL des Repositories&gt;</code></pre> Du findest die URL des Repositories, das Du gerne auschecken würdest, auf Atlassian Stash in der oberen rechten Ecke jeder Seite innerhalb des jeweiligen Projekts. Als Beispiel: Wenn ich unser Homepage-Projekt auschecken wollte, dann würde das so aussehen: <br /><pre><code>git clone https://psilo@www.unterrainer.info:8443/scm/uioh/homepage-mvc.git</code></pre></li><li>Du hast das Projekt erfolgreich ausgecheckt.</li></ol>`
+      value: [
+        {
+          text: `${''}1. Gehe im Windows-Datei-Explorer auf das Verzeichnis auf deiner lokalen Maschine, das Du als Zielverzeichnis für das Projekt ausgewählt hast, das Du gleich auschecken willst`
+        },
+        {
+          text: '2. Schreibe:'
+        },
+        {
+          code: `${''}git clone <URL des Repositories>`,
+          language: 'git'
+        },
+        {
+          text: `${''}Du findest die URL des Repositories, das Du gerne auschecken würdest, auf Atlassian Stash in der oberen rechten Ecke jeder Seite innerhalb des jeweiligen Projekts. Als Beispiel: Wenn ich unser Homepage-Projekt auschecken wollte, dann würde das so aussehen:`
+        },
+        {
+          code: `${''}git clone https://psilo@www.unterrainer.info:8443/scm/uioh/homepage-mvc.git`,
+          language: 'git'
+        },
+        {
+          text: `${''}3. Du hast das Projekt erfolgreich ausgecheckt.`
+        }
+      ]
     },
     {
       title: 'Änderungen verwerfen',

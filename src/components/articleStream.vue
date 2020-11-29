@@ -9,12 +9,28 @@
     >
       <v-card-title
         :class="
-          'justify-center text-center' +
+          'justify-center text-center mb-3' +
           (item.sub ? ' blue-grey lighten-5' : ' secondary')
         "
         v-html="item.title"
       ></v-card-title>
-      <v-card-text class="text-justify" v-html="item.value"></v-card-text>
+      <v-card-text
+        v-if="!Array.isArray(item.value)"
+        class="text-justify"
+        v-html="item.value"
+      ></v-card-text>
+      <span v-else>
+        <span v-for="(element, j) in item.value" :key="j">
+          <v-card-text
+            v-if="element.text"
+            class="text-justify pt-2 pb-1"
+            v-html="element.text"
+          >
+          </v-card-text>
+          <Code v-if="element.code" :content="element.code" :language="element.language" />
+          <br v-if="element.newLine"/>
+        </span>
+      </span>
       <v-spacer v-if="item.buttons"></v-spacer>
       <v-card-actions class="ma-0 pa-0" v-if="item.buttons">
         <v-container>
@@ -37,12 +53,16 @@
 </template>
 
 <script lang="js">
-
+import Code from '@/components/code.vue'
 export default {
   name: 'articleStream',
 
   props: {
     items: {}
+  },
+
+  components: {
+    Code
   },
 
   data: () => ({

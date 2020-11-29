@@ -1,21 +1,35 @@
 <template>
-  <Markdown :content="content" />
+  <span v-if="content">
+    <Markdown
+      v-if="
+        file.toLowerCase().endsWith('.md') ||
+        (language &&
+          (language.toLowerCase() === 'md' ||
+            language.toLowerCase() === 'markdown'))
+      "
+      :content="content"
+    />
+    <Code v-else :content="content" :language="language" />
+  </span>
 </template>
 
 <script lang="js">
+import Code from '@/components/code.vue'
 import Markdown from '@/components/markdown.vue'
 
 export default {
-  name: 'gitMarkdown',
+  name: 'gitRawFile',
 
   props: {
     file: {},
     project: {},
     branch: {},
-    user: {}
+    user: {},
+    language: {}
   },
 
   components: {
+    Code,
     Markdown
   },
 
@@ -28,7 +42,7 @@ export default {
 
   methods: {
     async getFile () {
-      return fetch(`https://raw.githubusercontent.com/${this.user}/${this.project}/${this.branch}/${this.file}`,
+      return fetch(`https://raw.githubusercontent.com/${this.user}/${this.project}/${this.branch || 'master'}/${this.file || 'README.md'}`,
         {
           method: 'GET'
         })

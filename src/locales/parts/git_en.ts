@@ -4,7 +4,55 @@ export default {
   gitList: [
     {
       title: 'GIT Commands',
-      value: `${''}Commonly used GIT commands:<br/><br /><pre><code>git config --global user.name &lt;username&gt;<br />git config --global user.email &lt;email&gt;<br />git add --all<br />git push origin dev<br />git status<br />git branch<br />git checkout<br />git clone<br />git pull<br />git stash<br />git stash pop</code></pre>`,
+      value: [
+        {
+          text: `${''}Commonly used GIT commands:`
+        },
+        {
+          code: `${''}git config --global user.name <username>`,
+          language: 'git'
+        },
+        {
+          code: `${''}git config --global user.email <email>`,
+          language: 'git'
+        },
+        {
+          code: `${''}git add --all`,
+          language: 'git'
+        },
+        {
+          code: `${''}git push origin dev`,
+          language: 'git'
+        },
+        {
+          code: `${''}git status`,
+          language: 'git'
+        },
+        {
+          code: `${''}git branch`,
+          language: 'git'
+        },
+        {
+          code: `${''}git checkout`,
+          language: 'git'
+        },
+        {
+          code: `${''}git clone`,
+          language: 'git'
+        },
+        {
+          code: `${''}git pull`,
+          language: 'git'
+        },
+        {
+          code: `${''}git stash`,
+          language: 'git'
+        },
+        {
+          code: `${''}git stash pop`,
+          language: 'git'
+        }
+      ],
       buttons: [
         {
           text: 'Basic GIT Tutorial',
@@ -15,7 +63,28 @@ export default {
     },
     {
       title: 'Checkout Code For The First Time',
-      value: `${''}<ol><li>Navigate to a directory on your local machine where you would like to have your project you are going to checkout.</li><li>Type <br /><pre><code>git clone &lt;URL of the repository&gt;</code></pre> You find the URL of the repository of your choice in Atlassian Stash in the upper right corner of any page in your project. For example, me cloning our Homepage-project would look like this: <br /><pre><code>git clone https://psilo@www.unterrainer.info:8443/scm/uioh/homepage-mvc.git</code></pre></li><li>You've successfully checked out the project.</li></ol>`
+      value: [
+        {
+          text: `${''}1. Navigate to a directory on your local machine where you would like to have your project you are going to checkout.`
+        },
+        {
+          text: '2. Type:'
+        },
+        {
+          code: `${''}git clone <URL of the repository>`,
+          language: 'git'
+        },
+        {
+          text: `${''}You find the URL of the repository of your choice in Atlassian Stash in the upper right corner of any page in your project. For example, me cloning our Homepage-project would look like this:`
+        },
+        {
+          code: `${''}git clone https://psilo@www.unterrainer.info:8443/scm/uioh/homepage-mvc.git`,
+          language: 'git'
+        },
+        {
+          text: `${''}3. You've successfully checked out the project.`
+        }
+      ]
     },
     {
       title: 'Revert Changes',
