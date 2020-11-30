@@ -8,7 +8,7 @@
       v-on="$listeners"
       active-class="v-btn--active"
       color="blue-grey lighten-5"
-      :class="getActiveClass(item)"
+      :class="getActiveClass('elevation-0', item)"
     >
       <v-icon left v-if="item.icon">{{ item.icon }}</v-icon> {{ item.text }}
     </v-btn>
@@ -25,7 +25,7 @@
           v-on="{ ...on, ...$listeners }"
           active-class="v-btn--active"
           color="blue-grey lighten-5"
-          :class="getActiveClass(item)"
+          :class="getActiveClass('elevation-0', item)"
         >
           <v-icon left v-if="item.icon">{{ item.icon }}</v-icon> {{ item.text }}
           <v-icon>expand_more</v-icon>
@@ -33,11 +33,15 @@
       </template>
       <v-list>
         <div v-for="(subItem, i) in item.subItems" :key="i">
-          <v-list-item :to="subItem.to">
-            <v-list-item-title
-              ><v-icon v-if="subItem.icon" left>{{ subItem.icon }}</v-icon>
-              {{ subItem.text }}</v-list-item-title
-            >
+          <v-list-item
+            @click="() => $router.push({ path: subItem.to }).catch(err => {})"
+            active-class="v-btn--active"
+            :class="getActiveClass('elevation-0', subItem)"
+          >
+            <v-list-item-title>
+              <v-icon v-if="subItem.icon" left>{{ subItem.icon }}</v-icon>
+              {{ subItem.text }}
+            </v-list-item-title>
           </v-list-item>
         </div>
       </v-list>
@@ -46,6 +50,7 @@
 </template>
 
 <script lang="js">
+import router from '@/router'
 
 export default {
   name: 'menuItem',
@@ -62,12 +67,15 @@ export default {
   },
 
   methods: {
-    getActiveClass (item) {
-      return 'elevation-0' +
-      ((item.endsWith && this.$route.path.endsWith(item.endsWith)) ||
-      (item.startsWith && this.$route.path.startsWith(item.startsWith))
-        ? ' v-btn--active'
-        : '')
+
+    getActiveClass (prefix, element) {
+      if ((element.endsWith !== undefined && this.$route.fullPath.endsWith(element.endsWith)) ||
+        (element.startsWith !== undefined && this.$route.fullPath.startsWith(element.startsWith)) ||
+        element.to === this.$route.fullPath) {
+        console.log(element.text + ' : ACTIVE')
+        return `${prefix} v-btn--active`
+      }
+      return prefix
     }
   }
 }
