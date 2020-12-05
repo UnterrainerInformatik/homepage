@@ -116,6 +116,12 @@ export default {
           icon: 'featured_play_list'
         },
         {
+          text: this.$t('cheatSheets.sheets.docker.title'),
+          to: '/app/cheatSheets?p=docker&l=docker.md',
+          endsWith: '/cheatSheets?p=docker&l=docker.md',
+          icon: 'featured_play_list'
+        },
+        {
           text: this.$t('cheatSheets.sheets.ssh.title'),
           to: '/app/cheatSheets?p=ssh&l=ssh_cheat_sheet.md',
           endsWith: '/cheatSheets?p=ssh&l=ssh_cheat_sheet.md',

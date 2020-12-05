@@ -6,6 +6,10 @@ export default {
       title: `${''}Linux`,
       description: `${''}Übliche Linux-Kommandos um einen Rechner aufzusetzen oder zu warten, Docker Installation, Laufwerke und Partitionierung, Festplatten mounten, Samba, NFS...`
     },
+    docker: {
+      title: `${''}Docker`,
+      description: `${''}Docker Befehle und Anleitungen.`
+    },
     ssh: {
       title: `${''}SSH`,
       description: `${''}SSH mit RSA-Schlüsseln auf Client und Server einrichten, Schlüssel generieren, rsync.`

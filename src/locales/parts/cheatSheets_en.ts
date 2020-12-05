@@ -6,6 +6,10 @@ export default {
       title: `${''}Linux`,
       description: `${''}General-purpose linux-commands for setting up or maintaining computers, Docker installation, partition HDDs, mounting, Samba, NFS...`
     },
+    docker: {
+      title: `${''}Docker`,
+      description: `${''}Docker commands and guides.`
+    },
     ssh: {
       title: `${''}SSH`,
       description: `${''}Set up SSH with RSA keys on client and server, generate keys, rsync.`
