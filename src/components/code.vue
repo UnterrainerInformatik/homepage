@@ -2,7 +2,7 @@
   <v-card v-if="!inline" class="secondary ma-1 my-2 pa-0"
     ><v-card-text class="ma-1 pa-0 px-1">
       <Prism
-        style="width: unset !important"
+        style="width: unset"
         v-if="content && language"
         :language="language"
         class="markdown-body"
@@ -10,7 +10,7 @@
       >
     </v-card-text>
   </v-card>
-  <v-chip v-else label x-small class="elevation-1 secondary ma-0 mx-1 pa-0 px-1" style="font-size: 1em !important;">
+  <v-chip v-else label x-small class="elevation-1 secondary ma-0 mx-1 pa-0 px-1" style="font-size: 1em;">
     <Prism
       v-if="content && language"
       :language="language"
@@ -63,7 +63,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 // Theme goes here:
 @import 'prismjs/themes/prism';
 
@@ -79,6 +79,5 @@ export default {
 code {
   word-break: break-word !important;
   white-space: pre-wrap !important;
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace !important;
 }
 </style>

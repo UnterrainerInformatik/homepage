@@ -77,10 +77,10 @@ export default {
 @import 'styles/index.scss';
 
 .v-application {
-  font-family: Arial, Helvetica, sans-serif !important;
+  font-family: Arial, Helvetica, sans-serif;
   .title {
     // To pin point specific classes of some components
-    font-family: Arial, Helvetica, sans-serif !important;
+    font-family: Arial, Helvetica, sans-serif;
   }
 }
 
