@@ -27,7 +27,7 @@
             v-html="element.text"
           >
           </v-card-text>
-          <Code v-if="element.code" :content="element.code" :language="element.language" />
+          <Code class="mycode" v-if="element.code" :content="element.code" :language="element.language" />
           <br v-if="element.newLine"/>
         </span>
       </span>
@@ -76,8 +76,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-code {
+<style scoped>
+.mycode >>> code {
   font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
     'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
     'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier,
@@ -96,7 +96,7 @@ code {
   margin: 0px !important;
   padding: 0px !important;
 }
-pre {
+.mycode >>> pre {
   text-align: left !important;
   white-space: pre-wrap;
   margin: 0px !important;
