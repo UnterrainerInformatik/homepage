@@ -698,7 +698,6 @@ export default {
 
 .markdown-body >>>:after,
 .markdown-body >>>:before {
-  display: table;
   content: "";
 }
 

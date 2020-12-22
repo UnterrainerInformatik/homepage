@@ -9,14 +9,14 @@
           src="@/assets/logo.png"
       /></v-container>
     </v-col>
+    <v-col>
+    </v-col>
     <v-col class="ma-0 pa-0">
       <v-row class="ma-0 pa-0">
         <v-col class="ma-0 pa-0 text-right">
           <span v-html="$t('resource.linkBarUInf32x32')"></span>
         </v-col>
-      </v-row>
-      <v-row class="ma-0 pa-0 text-right">
-        <v-col class="ma-0 pa-0">
+        <v-col class="ma-0 pa-0 ml-6">
           <v-btn
             fab
             x-small
@@ -28,7 +28,7 @@
             fab
             x-small
             @click="setLanguage('de')"
-            :class="'mr-2 ml-4' + ($i18n.locale == 'de' ? ' secondary' : '')"
+            :class="'mr-2 ml-2' + ($i18n.locale == 'de' ? ' secondary' : '')"
             ><img src="@/assets/flag-atde.png" alt="de" class="ma-0 pa-0" />
           </v-btn>
         </v-col>
