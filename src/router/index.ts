@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
+import VueRouter, { RouteConfig, RouterOptions } from 'vue-router'
 
 Vue.use(VueRouter)
 
-const routes: Array<RouteConfig> = [
+const routes = [
   {
     path: '/',
     redirect: '/app/home'
@@ -67,12 +67,12 @@ const routes: Array<RouteConfig> = [
     path: '/*',
     component: () => import('../views/page404.vue')
   }
-]
+] as Array<RouteConfig>
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+} as RouterOptions)
 
 export default router
