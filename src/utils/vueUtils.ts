@@ -1,7 +1,7 @@
 import vuetify from '@/plugins/vuetify'
 
-export default {
-  adaptive: function (array: object[]) {
+class VueUtils {
+  public adaptive (array: object[]) {
     switch (vuetify.framework.breakpoint.name) {
       case 'xs':
         return array[0]
@@ -14,19 +14,19 @@ export default {
       case 'xl':
         return array[4]
     }
-  },
+  }
 
   /**
-   * With this you can get the correct image (light/dark) for the currently selected theme.
+   * This method gets the correct image (light/dark) for the currently selected theme.
    *
    * @param isDark send this.$vuetify.theme.dark here
    * @param namePreDelimiter the part of the file-name that goes before the black/white part
    * @param namePostDelimiter the part of the file-name that goes after the black/white part
    * @returns the string of the image that matches the theme-mode
    */
-  getThemedImage: function (isDark: boolean, namePreDelimiter: string, namePostDelimiter: string) {
+  public getThemedImage (isDark: boolean, namePreDelimiter: string, namePostDelimiter: string) {
     return namePreDelimiter + (isDark ? 'white' : 'black') + namePostDelimiter
-  },
+  }
 
   /**
    * Groups the give array into groups of the given size (at max).
@@ -34,7 +34,7 @@ export default {
    * @param array the input array
    * @param groupSize the number of items one group should contain at max
    */
-  group: function (array: object[], groupSize: number) {
+  public group (array: object[], groupSize: number) {
     const result: object[] = []
     let newGroup: object[] = []
     for (let i = 0; i < array.length; i++) {
@@ -49,7 +49,7 @@ export default {
       result.push(newGroup)
     }
     return result
-  },
+  }
 
   /**
    * Follows the one-based indexed main-field-name in the translation-keys of the currently selected language until it is
@@ -65,7 +65,7 @@ export default {
    * all of the additional-field-content, if they were present (the name of those filds is the corresponding
    * additionalFieldName)
    */
-  getNumberedTranslationObjectArray: function (i18n, path, mainFieldName, additionalFieldNames) {
+  public getNumberedTranslationObjectArray (i18n, path, mainFieldName, additionalFieldNames) {
     if (!mainFieldName) {
       return {}
     }
@@ -97,3 +97,5 @@ export default {
     return result
   }
 }
+
+export default new VueUtils()
