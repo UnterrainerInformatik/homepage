@@ -30,7 +30,7 @@
 </template>
 
 <script lang="js">
-import vueUtils from '@/utils/vueUtils'
+import { singleton as vueUtils } from '@/utils/vueUtils'
 import { mapGetters } from 'vuex'
 import MenuBar from '@/components/menuBar.vue'
 import HeaderElement from '@/components/headerElement.vue'

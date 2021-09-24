@@ -17,7 +17,7 @@
 </template>
 
 <script lang="js">
-import vueUtils from '@/utils/vueUtils'
+import { singleton as vueUtils } from '@/utils/vueUtils'
 export default {
   name: 'impress',
 
