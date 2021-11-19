@@ -33,6 +33,16 @@
     <ArticleStream :items="$t('about.resources')"></ArticleStream>
     <v-divider class="my-6"></v-divider>
     <Impress></Impress>
+    <v-card>
+      {{ $t('about.wettercomLinkDescription') }} <v-btn
+            class="mb-1"
+            color="primary"
+            small
+            href="https://www.daswetter.com"
+          >
+          https://www.daswetter.com
+          </v-btn>
+    </v-card>
   </div>
 </template>
 
