@@ -7,7 +7,7 @@ export default {
   emailSubject: 'Feedback via Homepage',
   personalEmailBody: '',
   personalEmailSubject: 'Frage via Homepage',
-  wettercomLinkDescription: 'Wir benutzen ',
+  zamgLinkDescription: 'Wir benutzen ',
   impressumTitle: 'Impressum',
   impressum: `${''}<b style='font-size: large'>Unterrainer Informatik OG</b><br /><i>Offene Gesellschaft</i><br /><br /><b>Softwareentwicklung und Consulting</b><br /><br />UID-Nr: ATU66981117<br />FN: FN 374582 g<br />FB-Gericht: Landesgericht Steyr<br /><br />Sitz: 4470 Enns<br />Königgutstraße 4 | Austria<br />E-Mail: office@unterrainer.info<br /><br /><i>Mitglied der WKÖ, WKOÖ<br />Bezirkshauptmannschaft Linz-Land<br />Geschäftsführende Gesellschafter: Gerald Unterrainer (50%), Günter Unterrainer (50%)<br />Unser Anliegen: Information über unsere Produkte<br /></i>`,
   LastChanges: 'Letzte Änderungen auf dieser Seite: ',

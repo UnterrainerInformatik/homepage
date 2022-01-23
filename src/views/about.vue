@@ -34,13 +34,13 @@
     <v-divider class="my-6"></v-divider>
     <Impress></Impress>
     <v-card>
-      {{ $t('about.wettercomLinkDescription') }} <v-btn
+      {{ $t('about.zamgLinkDescription') }} <v-btn
             class="mb-1"
             color="primary"
             small
-            href="https://www.daswetter.com"
+            href="https://www.zamg.ac.at/"
           >
-          https://www.daswetter.com
+          https://www.zamg.ac.at/
           </v-btn>
     </v-card>
   </div>
