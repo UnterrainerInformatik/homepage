@@ -15,7 +15,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.homepage.rule=Host(`unterrainer.info`)
-      - traefik.http.routers.homepage.middlewares=std-headers@file,https-redirect@file
+      - traefik.http.routers.homepage.middlewares=www-remove@file,std-headers@file,https-redirect@file
       - traefik.http.services.homepage.loadbalancer.server.port=80
 
 networks:
