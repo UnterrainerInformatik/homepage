@@ -13,11 +13,10 @@ services:
       - "/app/deploy/homepage/nginx.conf:/etc/nginx/nginx.conf"
     command: ["nginx", "-g", "daemon off;"]
     labels:
-      - "traefik.enable=true"
-      - "traefik.homepage.port=80"
-      - "traefik.homepage.backend=homepage"
-      - "traefik.homepage.frontend.rule=Host:unterrainer.info"
-      - "traefik.homepage.frontend.entryPoints=http,https"
+      - traefik.enable=true
+      - traefik.http.routers.homepage.rule=Host(`unterrainer.info`)
+      - traefik.http.routers.homepage.middlewares=std-headers@file,https-redirect@file
+      - traefik.http.services.homepage.loadbalancer.server.port=80
 
 networks:
   default:
