@@ -110,15 +110,39 @@ export default {
       icon: 'emoji_objects',
       subItems: [
         {
-          text: this.$t('cheatSheets.sheets.linux.title'),
-          to: '/app/cheatSheets?p=linux&l=linux_cheat_sheet.md',
-          endsWith: '/cheatSheets?p=linux&l=linux_cheat_sheet.md',
-          icon: 'featured_play_list'
-        },
-        {
           text: this.$t('cheatSheets.sheets.docker.title'),
           to: '/app/cheatSheets?p=docker&l=docker.md',
           endsWith: '/cheatSheets?p=docker&l=docker.md',
+          icon: 'featured_play_list'
+        },
+        {
+          text: this.$t('cheatSheets.sheets.gpg.title'),
+          to: '/app/cheatSheets?p=gpg&l=gpg_cheat_sheet.md',
+          endsWith: '/cheatSheets?p=gpg&l=gpg_cheat_sheet.md',
+          icon: 'featured_play_list'
+        },
+        {
+          text: this.$t('cheatSheets.sheets.hibernation.title'),
+          to: '/app/cheatSheets?p=hibernation&l=scheduled_hibernation.md',
+          endsWith: '/cheatSheets?p=hibernation&l=scheduled_hibernation.md',
+          icon: 'featured_play_list'
+        },
+        {
+          text: this.$t('cheatSheets.sheets.keycloak.title'),
+          to: '/app/cheatSheets?p=hibernation&l=keycloak_update_from_pre_13.md',
+          endsWith: '/cheatSheets?p=hibernation&l=keycloak_update_from_pre_13.md',
+          icon: 'featured_play_list'
+        },
+        {
+          text: this.$t('cheatSheets.sheets.letsEncrypt.title'),
+          to: '/app/cheatSheets?p=letsEncrypt&l=letsencrypt_cheat_sheet.md',
+          endsWith: '/cheatSheets?p=letsEncrypt&l=letsencrypt_cheat_sheet.md',
+          icon: 'featured_play_list'
+        },
+        {
+          text: this.$t('cheatSheets.sheets.linux.title'),
+          to: '/app/cheatSheets?p=linux&l=linux_cheat_sheet.md',
+          endsWith: '/cheatSheets?p=linux&l=linux_cheat_sheet.md',
           icon: 'featured_play_list'
         },
         {
@@ -131,24 +155,6 @@ export default {
           text: this.$t('cheatSheets.sheets.ssl.title'),
           to: '/app/cheatSheets?p=ssl&l=ssl_cheat_sheet.md',
           endsWith: '/cheatSheets?p=ssl&l=ssl_cheat_sheet.md',
-          icon: 'featured_play_list'
-        },
-        {
-          text: this.$t('cheatSheets.sheets.gpg.title'),
-          to: '/app/cheatSheets?p=gpg&l=gpg_cheat_sheet.md',
-          endsWith: '/cheatSheets?p=gpg&l=gpg_cheat_sheet.md',
-          icon: 'featured_play_list'
-        },
-        {
-          text: this.$t('cheatSheets.sheets.letsEncrypt.title'),
-          to: '/app/cheatSheets?p=letsEncrypt&l=letsencrypt_cheat_sheet.md',
-          endsWith: '/cheatSheets?p=letsEncrypt&l=letsencrypt_cheat_sheet.md',
-          icon: 'featured_play_list'
-        },
-        {
-          text: this.$t('cheatSheets.sheets.hibernation.title'),
-          to: '/app/cheatSheets?p=hibernation&l=scheduled_hibernation.md',
-          endsWith: '/cheatSheets?p=hibernation&l=scheduled_hibernation.md',
           icon: 'featured_play_list'
         },
         {
