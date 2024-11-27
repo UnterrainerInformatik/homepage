@@ -91,7 +91,7 @@ export default {
       value: `${''}<ol><li>Wenn Du uncommittete Changes hast und diese verwerfen willst (unter Beibehaltung deiner Commits), schreibe <br /><pre><code>git reset --hard</code></pre><pre><code>git pull</code></pre></li><li>Wenn Du auch die committeten Changes reverten willst, verwende <br /><pre><code>git reset --hard origin/&lt;branch&gt;</code></pre><pre><code>git pull</code></pre></li></ol>`
     },
     {
-      title: 'Generelle Informationen betreffend Repositories von Unterrainer Informatik OG',
+      title: 'Generelle Informationen betreffend Repositories von Unterrainer Informatik',
       value: `${''}<ul><li>Unsere Projekte haben alle zwei Branches. Einen master- und einen dev-branch.</li><li>Du darfst nur auf den remote dev-branch eines Projektes pushen, auf das Du Zugriff hast.</li><li>Nur Psilo darf auf den remote master-branch pushen und mergen. Du hast dafür keine Berechtigungen.</li><li>Nachdem Du deine Arbeit abgeschlossen hast, starte einen pull-request, damit Psilo deine Änderungen am remote dev-branch ansehen und eventuell auf den remote master-branch mergen kann..</li><li>Du darfst auch zusätzliche remote-branches anlegen, aber bitte sprich vorher kurz mit Psilo darüber.</li></ul>`
     },
     {
