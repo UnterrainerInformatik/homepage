@@ -1,7 +1,7 @@
 import variables from '@/locales/variables'
 
 export default {
-  title: 'Willkommen bei Unterrainer Informatik OG!',
+  title: 'Willkommen bei Unterrainer Informatik!',
   description: 'Wir entwickeln Software und Spiele und probieren Sie an diesem Prozess teilhaben zu lassen.',
   servicesBullets: [
     {
@@ -44,6 +44,10 @@ export default {
           color: 'accent'
         }
       ]
+    },
+    {
+      title: 'FREE TO PLAY!',
+      value: `${''}Unser Spiel ist jetzt endlich FREE TO PLAY!<br/>Damit wollen wir einen Teil eures Supports zurückgeben. Danke!<br/><p><center><a href='${variables.steamLinkThrobax}' target='_blank'>${variables.throbaxSteamStoreImage}</a></center></p>`
     },
     {
       title: 'Freie C# Libraries',

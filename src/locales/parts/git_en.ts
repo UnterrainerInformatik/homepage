@@ -91,7 +91,7 @@ export default {
       value: `${''}<ol><li>If you have any uncommitted changes you want to revert (without losing any commits), type <br /><pre><code>git reset --hard<br />git pull</code></pre></li><li>If you want to revert these commits as well, type <br /><pre><code>git reset --hard origin/&lt;branch&gt;<br />git pull</code></pre></li></ol>`
     },
     {
-      title: 'General Information about the Repositories on Unterrainer Informatik OG',
+      title: 'General Information about the Repositories on Unterrainer Informatik',
       value: `${''}<ul><li>All our projects have at least two branches. A master- and a dev-branch.</li><li>You are only permitted to push to the remote dev-branch of any project you have permission to use.</li><li>Only Psilo may push to and merge to the remote master-branch. You don't have the permissions.</li><li>After you've finished your work, start a pull-request so that Psilo may review your changes on the remote dev-branch and merge it to the remote master-branch.</li><li>You may also generate additional remote branches, but please check back with Psilo before doing so.</li></ul>`
     },
     {
