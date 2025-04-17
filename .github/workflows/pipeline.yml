@@ -10,7 +10,6 @@ jobs:
   bump:
     name: Get And Bump SemVer 👊
     runs-on: ubuntu-latest
-    needs: [build]
     steps:
       - name: Checkout repo 📦
         uses: actions/checkout@v4
