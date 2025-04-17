@@ -1,4 +1,4 @@
-name: Docs
+name: PIPELINE
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
     name: Build 🔨
     runs-on: ubuntu-latest
     outputs:
-      pom_version: ${{ setps.set_version.outputs.pom_version }}
+      pom_version: ${{ steps.set_version.outputs.pom_version }}
       major_version: ${{ steps.set_version.outputs.major_version }}
       minor_version: ${{ steps.set_version.outputs.minor_version }}
       build_version: $ {{ steps.set_version.outputs.build_version}}
