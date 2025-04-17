@@ -110,11 +110,11 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64/v8
           push: true
-          tags: 
-            - ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:latest
-            - ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.build.outputs.major_version }}
-            - ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.build.outputs.minor_version }}
-            - ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.build.outputs.build_version }}
+          tags: |
+              ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:latest
+              ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.build.outputs.major_version }}
+              ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.build.outputs.minor_version }}
+              ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.build.outputs.build_version }}
   deploy:
     name: Deployment 🚀
     runs-on: ubuntu-latest
