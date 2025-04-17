@@ -25,7 +25,7 @@ jobs:
           WITH_V: false
       - name: Extract version from tag 🔍
         env:
-          POM_VERSION: ${{ steps.bump_version.new_tag }}
+          POM_VERSION: ${{ steps.bump_version.outputs.new_tag }}
         run: |
             MAJOR_VERSION=$(echo $POM_VERSION | cut -d. -f1)
             MINOR_VERSION=$(echo $POM_VERSION | cut -d. -f2)
