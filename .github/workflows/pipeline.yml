@@ -24,8 +24,9 @@ jobs:
           DEFAULT_BUMP: patch
           WITH_V: false
       - name: Extract version from tag 🔍
+        env:
+          - POM_VERSION=${{ steps.bump_version.new_tag }}
         run: |
-            POM_VERSION=${{ steps.bump_version.tag }}
             MAJOR_VERSION=$(echo $POM_VERSION | cut -d. -f1)
             MINOR_VERSION=$(echo $POM_VERSION | cut -d. -f2)
             BUILD_VERSION=$(echo $POM_VERSION | cut -d. -f3)
