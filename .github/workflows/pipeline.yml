@@ -10,6 +10,11 @@ jobs:
   bump:
     name: Get And Bump SemVer 👊
     runs-on: ubuntu-latest
+    outputs:
+      pom_version: ${{ steps.set_version.outputs.pom_version }}
+      major_version: ${{ steps.set_version.outputs.major_version }}
+      minor_version: ${{ steps.set_version.outputs.minor_version }}
+      build_version: ${{ steps.set_version.outputs.build_version }}
     steps:
       - name: Checkout repo 📦
         uses: actions/checkout@v4
@@ -24,6 +29,7 @@ jobs:
           DEFAULT_BUMP: patch
           WITH_V: false
       - name: Extract version from tag 🔍
+        id: set_version
         env:
           POM_VERSION: ${{ steps.bump_version.outputs.new_tag }}
         run: |
@@ -70,24 +76,6 @@ jobs:
         uses: reedyuk/npm-version@1.1.1
         with:
           version: ${{ needs.bump.outputs.major_version }}.${{ needs.bump.outputs.minor_version }}.${{ needs.bump.outputs.build_version }}
-      - name: Extract version from package.json 🔍
-        id: set_version
-        run: |
-            POM_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
-            MAJOR_VERSION=$(echo $POM_VERSION | cut -d. -f1)
-            MINOR_VERSION=$(echo $POM_VERSION | cut -d. -f2)
-            BUILD_VERSION=$(echo $POM_VERSION | cut -d. -f3)
-            echo POM:$POM_VERSION, MAJOR:$MAJOR_VERSION, MINOR:$MINOR_VERSION, BUILD:$BUILD_VERSION
-            echo --- set output for step ---
-            echo "pom_version=${POM_VERSION}" >> $GITHUB_ENV
-            echo "major_version=${MAJOR_VERSION}" >> $GITHUB_ENV
-            echo "minor_version=${MINOR_VERSION}" >> $GITHUB_ENV
-            echo "build_version=${BUILD_VERSION}" >> $GITHUB_ENV
-            echo --- set output for job ---
-            echo "pom_version=${POM_VERSION}" >> $GITHUB_OUTPUT
-            echo "major_version=${MAJOR_VERSION}" >> $GITHUB_OUTPUT
-            echo "minor_version=${MINOR_VERSION}" >> $GITHUB_OUTPUT
-            echo "build_version=${BUILD_VERSION}" >> $GITHUB_OUTPUT
       - name: build (install dependencies) ⚙️
         run: |
             npm install
