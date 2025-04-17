@@ -61,10 +61,10 @@ jobs:
             echo "minor_version=${MINOR_VERSION}" >> $GITHUB_ENV
             echo "build_version=${BUILD_VERSION}" >> $GITHUB_ENV
             echo --- set output for job ---
-            echo "::set-output name=pom_version::${POM_VERSION}"
-            echo "::set-output name=major_version::${MAJOR_VERSION}"
-            echo "::set-output name=minor_version::${MINOR_VERSION}"
-            echo "::set-output name=build_version::${BUILD_VERSION}"
+            echo "pom_version=${POM_VERSION}" >> $GITHUB_OUTPUT
+            echo "major_version=${MAJOR_VERSION}" >> $GITHUB_OUTPUT
+            echo "minor_version=${MINOR_VERSION}" >> $GITHUB_OUTPUT
+            echo "build_version=${BUILD_VERSION}" >> $GITHUB_OUTPUT
       - name: build (install dependencies) ⚙️
         run: |
             npm install
