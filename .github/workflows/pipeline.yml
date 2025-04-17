@@ -50,12 +50,7 @@ jobs:
       - name: Extract version from package.json 🔍
         id: set_version
         run: |
-            POM_VERSION=$(cat package.json \
-            grep version \
-            head -1 \
-            awk -F: '{ print $2 }' \
-            sed 's/[",]//g' \
-            tr -d '[[:space:]]')
+            POM_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
             MAJOR_VERSION=$(echo $POM_VERSION | cut -d. -f1).$(echo $POM_VERSION | cut -d. -f2)
             MINOR_VERSION=$(echo $POM_VERSION | cut -d. -f1).$(echo $POM_VERSION | cut -d. -f2)
             BUILD_VERSION=$(echo $POM_VERSION | cut -d. -f1).$(echo $POM_VERSION | cut -d. -f2).$(echo $POM_VERSION | cut -d. -f3)
