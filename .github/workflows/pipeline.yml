@@ -51,10 +51,10 @@ jobs:
         id: set_version
         run: |
             POM_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
-            MAJOR_VERSION=$(echo $POM_VERSION | cut -d. -f1).$(echo $POM_VERSION | cut -d. -f2)
-            MINOR_VERSION=$(echo $POM_VERSION | cut -d. -f1).$(echo $POM_VERSION | cut -d. -f2)
-            BUILD_VERSION=$(echo $POM_VERSION | cut -d. -f1).$(echo $POM_VERSION | cut -d. -f2).$(echo $POM_VERSION | cut -d. -f3)
-            echo $POM_VERSION, $MAJOR_VERSION, $MINOR_VERSION, $BUILD_VERSION
+            MAJOR_VERSION=$(echo $POM_VERSION | cut -d. -f1)
+            MINOR_VERSION=$(echo $POM_VERSION | cut -d. -f2)
+            BUILD_VERSION=$(echo $POM_VERSION | cut -d. -f3)
+            echo POM:$POM_VERSION, MAJOR:$MAJOR_VERSION, MINOR:$MINOR_VERSION, BUILD:$BUILD_VERSION
             echo --- set output for step ---
             echo "pom_version=${POM_VERSION}" >> $GITHUB_ENV
             echo "major_version=${MAJOR_VERSION}" >> $GITHUB_ENV
@@ -98,6 +98,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+      - name: test
+        run: |
+          echo docker: ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.build.outputs.major_version }}.${{ needs.build.outputs.minor_version }}.${{ needs.build.outputs.build_version }}
       - name: Build and push 🔨
         uses: docker/build-push-action@v5
         with:
@@ -108,8 +111,8 @@ jobs:
           tags: |
               ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:latest
               ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.build.outputs.major_version }}
-              ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.build.outputs.minor_version }}
-              ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.build.outputs.build_version }}
+              ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.build.outputs.major_version }}.${{ needs.build.outputs.minor_version }}
+              ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.build.outputs.major_version }}.${{ needs.build.outputs.minor_version }}.${{ needs.build.outputs.build_version }}
   deploy:
     name: Deployment 🚀
     runs-on: ubuntu-latest
