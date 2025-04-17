@@ -54,6 +54,7 @@ jobs:
             MAJOR_VERSION=$(echo $POM_VERSION | cut -d. -f1).$(echo $POM_VERSION | cut -d. -f2)
             MINOR_VERSION=$(echo $POM_VERSION | cut -d. -f1).$(echo $POM_VERSION | cut -d. -f2)
             BUILD_VERSION=$(echo $POM_VERSION | cut -d. -f1).$(echo $POM_VERSION | cut -d. -f2).$(echo $POM_VERSION | cut -d. -f3)
+            echo $POM_VERSION, $MAJOR_VERSION, $MINOR_VERSION, $BUILD_VERSION
             echo --- set output for step ---
             echo "pom_version=${POM_VERSION}" >> $GITHUB_ENV
             echo "major_version=${MAJOR_VERSION}" >> $GITHUB_ENV
