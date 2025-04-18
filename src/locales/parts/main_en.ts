@@ -2,7 +2,7 @@ import variables from '@/locales/variables'
 
 export default {
   title: 'Welcome to Unterrainer Informatik!',
-  description: 'We develop software and games and try to involve you in this process.',
+  description: 'Together, we craft innovative software solutions with you.',
   servicesBullets: [
     {
       title: 'Game Development',
