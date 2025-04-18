@@ -131,21 +131,6 @@ jobs:
     steps:
       - name: Checkout repo 📦
         uses: actions/checkout@v4
-      - name: Install OpenVPN
-        run: |
-          sudo apt update
-          sudo apt install -y openvpn openvpn-systemd-resolved
-      - name: Touch OVPN client-config file
-        run: touch client.ovpn
-      - name: Fill OVPN client-config file
-        run: |
-            echo "${{ secrets.VPN_OVPN_FILE }}" >> client.ovpn
-      - name: Connect to VPN 🔓
-        uses: "kota65535/github-openvpn-connect-action@v3"
-        with:
-          config_file: client.ovpn
-          username: ${{ secrets.VPN_USERNAME }}
-          password: ${{ secrets.VPN_PASSWORD }}
       - name: Installing SSH key 🔑
         uses: UnterrainerInformatik/setup-ssh-action@v1
         with:
