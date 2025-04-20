@@ -10,179 +10,40 @@ jobs:
   bump:
     uses: UnterrainerInformatik/bump-semver-workflow/.github/workflows/workflow.yml@master
   build:
-    name: Build 🔨
-    runs-on: [self-hosted, Linux, X64]
-    needs: [bump]
-    steps:
-      - name: Pre-fetch upload-artifact action (self-hosted only) ⚙️
-        if: contains(runner.labels, 'self-hosted')
-        run: |
-          mkdir -p ~/.setup-actions
-          cd ~/.setup-actions
-          if [ ! -d "upload-artifact" ]; then
-            echo "Cloning upload-artifact@v4..."
-            git clone --depth=1 --branch v4 https://github.com/actions/upload-artifact.git upload-artifact
-            echo "✅ upload-artifact@v4 cloned manually!"
-          else
-            echo "✅ upload-artifact already fetched."
-          fi
-      - name: Checkout repo 📦
-        uses: actions/checkout@v4
-      - name: Cache Node.js modules 💾
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Set up Node ⚙️
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: 'package-lock.json'
-      - name: Update version in package.json 💾
-        uses: reedyuk/npm-version@1.1.1
-        with:
-          version: ${{ needs.bump.outputs.major_version }}.${{ needs.bump.outputs.minor_version }}.${{ needs.bump.outputs.build_version }}
-      - name: build (install dependencies) ⚙️
-        run: |
-            npm install
-      - name: build (build) 🔨
-        run: |
-            npm run build
-      - name: Upload build artifacts ⬆️
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-artifacts
-          path: ./dist
-
+    uses: UnterrainerInformatik/npm-build-workflow/.github/workflows/workflow.yml@master
+    needs: bump
+    with:
+      major_version: ${{ needs.bump.outputs.major_version }}
+      minor_version: ${{ needs.bump.outputs.minor_version }}
+      build_version: ${{ needs.bump.outputs.build_version }}
   docker-build:
-    name: Build Docker Image 🐋
-    runs-on: [self-hosted, Linux, X64]
-    needs: [build, bump]
-    steps:
-      - name: Pre-fetch upload-artifact action (self-hosted only) ⚙️
-        if: contains(runner.labels, 'self-hosted')
-        run: |
-          mkdir -p ~/.setup-actions
-          cd ~/.setup-actions
-          if [ ! -d "upload-artifact" ]; then
-            echo "Cloning upload-artifact@v4..."
-            git clone --depth=1 --branch v4 https://github.com/actions/upload-artifact.git upload-artifact
-            echo "✅ upload-artifact@v4 cloned manually!"
-          else
-            echo "✅ upload-artifact already fetched."
-          fi
-      - name: Checkout repo 📦
-        uses: actions/checkout@v4
-      - name: Download build artifacts ⬇️
-        uses: actions/download-artifact@v4
-        with:
-          name: build-artifacts
-          path: dist
-      - name: Setup QEMU ⚙️
-        uses: docker/setup-qemu-action@v3
-      - name: Set up Docker Buildx ⚙️
-        uses: docker/setup-buildx-action@v3
-      - name: Login to DockerHub 🔑
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_HUB_USER }}
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-      - name: test
-        run: |
-          echo docker: ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.bump.outputs.major_version }}.${{ needs.bump.outputs.minor_version }}.${{ needs.bump.outputs.build_version }}
-      - name: Build and push 🔨
-        uses: docker/build-push-action@v5
-        with:
-          context: ./
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64/v8
-          push: true
-          tags: |
-              ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:latest
-              ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.bump.outputs.major_version }}
-              ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.bump.outputs.major_version }}.${{ needs.bump.outputs.minor_version }}
-              ${{ secrets.DOCKER_HUB_USER }}/${{ secrets.DOCKER_IMAGE_NAME}}:${{ needs.bump.outputs.major_version }}.${{ needs.bump.outputs.minor_version }}.${{ needs.bump.outputs.build_version }}
+    uses: UnterrainerInformatik/docker-build-workflow/.github/workflows/workflow.yml@master
+    needs: [bump, build]
+    with:
+      major_version: ${{ needs.bump.outputs.major_version }}
+      minor_version: ${{ needs.bump.outputs.minor_version }}
+      build_version: ${{ needs.bump.outputs.build_version }}
+    secrets:
+      DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
+      DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+      DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
   deploy:
-    name: Deployment 🚀
-    runs-on: [self-hosted, Linux, X64]
-    needs: [docker-build, build, bump]
-    steps:
-      - name: Pre-fetch upload-artifact action (self-hosted only) ⚙️
-        if: contains(runner.labels, 'self-hosted')
-        run: |
-          mkdir -p ~/.setup-actions
-          cd ~/.setup-actions
-          if [ ! -d "upload-artifact" ]; then
-            echo "Cloning upload-artifact@v4..."
-            git clone --depth=1 --branch v4 https://github.com/actions/upload-artifact.git upload-artifact
-            echo "✅ upload-artifact@v4 cloned manually!"
-          else
-            echo "✅ upload-artifact already fetched."
-          fi
-      - name: Checkout repo 📦
-        uses: actions/checkout@v4
-      - name: Install OpenVPN
-        run: |
-          sudo apt update
-          sudo apt install -y openvpn openvpn-systemd-resolved
-      - name: Touch OVPN client-config file
-        run: touch client.ovpn
-      - name: Fill OVPN client-config file
-        run: |
-            echo "${{ secrets.VPN_OVPN_FILE }}" >> client.ovpn
-      - name: Connect to VPN 🔓
-        uses: "kota65535/github-openvpn-connect-action@v3"
-        with:
-          config_file: client.ovpn
-          username: ${{ secrets.VPN_USERNAME }}
-          password: ${{ secrets.VPN_PASSWORD }}
-      - name: Installing SSH key 🔑
-        uses: UnterrainerInformatik/setup-ssh-action@v1
-        with:
-          key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
-      - name: Create deploy directory 🚧
-        uses: UnterrainerInformatik/ssh-mkdir-action@v1
-        with:
-          dir: ${{ secrets.DEPLOY_DIR }}
-          user: ${{ secrets.DEPLOY_SSH_USER }}
-          host: ${{ secrets.DEPLOY_SERVER }}
-          port: ${{ secrets.DEPLOY_SSH_PORT }}
-      - name: Create data directory 🚧
-        uses: UnterrainerInformatik/ssh-mkdir-action@v1
-        with:
-          dir: ${{ secrets.DATA_DIR }}
-          user: ${{ secrets.DEPLOY_SSH_USER }}
-          host: ${{ secrets.DEPLOY_SERVER }}
-          port: ${{ secrets.DEPLOY_SSH_PORT }}
-      - name: Touch .env file for deployment
-        run: touch ./deploy/.env
-      - name: Fill .env file for deployment
-        run: |
-            echo VERSION=${{ needs.bump.outputs.version }} >> ./deploy/.env
-            echo MAJOR_VERSION=${{ needs.bump.outputs.major_version }} >> ./deploy/.env
-            echo MINOR_VERSION=${{ needs.bump.outputs.minor_version }} >> ./deploy/.env
-            echo BUILD_VERSION=${{ needs.bump.outputs.build_version }} >> ./deploy/.env
-            echo DOCKER_HUB_USER=${{ secrets.DOCKER_HUB_USER }} >> ./deploy/.env
-            echo DOCKER_IMAGE_NAME=${{ secrets.DOCKER_IMAGE_NAME }} >> ./deploy/.env
-      - name: Deploy using SSH 🚛
-        uses: UnterrainerInformatik/ssh-deploy-action@v1
-        with:
-          source: ./deploy/
-          target: ${{ secrets.DEPLOY_DIR }}
-          chmod-mask: 777
-          chmod-selector: ./deploy/*.sh
-          user: ${{ secrets.DEPLOY_SSH_USER }}
-          host: ${{ secrets.DEPLOY_SERVER }}
-          port: ${{ secrets.DEPLOY_SSH_PORT }}
-      - name: Run using SSH 🏃
-        uses: UnterrainerInformatik/ssh-run-action@v1
-        with:
-          dir: ${{ secrets.DEPLOY_DIR }}
-          file: up.sh
-          user: ${{ secrets.DEPLOY_SSH_USER }}
-          host: ${{ secrets.DEPLOY_SERVER }}
-          port: ${{ secrets.DEPLOY_SSH_PORT }}
-
+    uses: UnterrainerInformatik/deploy-workflow/.github/workflows/workflow.yml@master
+    needs: [bump, build, docker-build]
+    with:
+      major_version: ${{ needs.bump.outputs.major_version }}
+      minor_version: ${{ needs.bump.outputs.minor_version }}
+      build_version: ${{ needs.bump.outputs.build_version }}
+    secrets:
+      DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
+      DEPLOY_SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
+      DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
+      DEPLOY_SSH_PORT: ${{ secrets.DEPLOY_SSH_PORT }}
+      DEPLOY_DIR: ${{ secrets.DEPLOY_DIR }}
+      DATA_DIR: ${{ secrets.DATA_DIR }}
+      DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
+      DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
+      # Optional – only when OVPN is needed:
+      VPN_OVPN_FILE: ${{ secrets.VPN_OVPN_FILE }}
+      VPN_USERNAME: ${{ secrets.VPN_USERNAME }}
+      VPN_PASSWORD: ${{ secrets.VPN_PASSWORD }}
