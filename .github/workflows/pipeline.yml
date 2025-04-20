@@ -34,6 +34,7 @@ jobs:
       major_version: ${{ needs.bump.outputs.major_version }}
       minor_version: ${{ needs.bump.outputs.minor_version }}
       build_version: ${{ needs.bump.outputs.build_version }}
+      ovpn_enabled: true
     secrets:
       DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
       DEPLOY_SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
