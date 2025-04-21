@@ -9,10 +9,13 @@ on:
 jobs:
   bump:
     uses: UnterrainerInformatik/bump-semver-workflow/.github/workflows/workflow.yml@master
+    with:
+      self_hosted: true
   build:
     uses: UnterrainerInformatik/npm-build-workflow/.github/workflows/workflow.yml@master
     needs: bump
     with:
+      self_hosted: true
       major_version: ${{ needs.bump.outputs.major_version }}
       minor_version: ${{ needs.bump.outputs.minor_version }}
       build_version: ${{ needs.bump.outputs.build_version }}
@@ -20,6 +23,7 @@ jobs:
     uses: UnterrainerInformatik/docker-build-workflow/.github/workflows/workflow.yml@master
     needs: [bump, build]
     with:
+      self_hosted: true
       major_version: ${{ needs.bump.outputs.major_version }}
       minor_version: ${{ needs.bump.outputs.minor_version }}
       build_version: ${{ needs.bump.outputs.build_version }}
@@ -31,6 +35,7 @@ jobs:
     uses: UnterrainerInformatik/deploy-workflow/.github/workflows/workflow.yml@master
     needs: [bump, build, docker-build]
     with:
+      self_hosted: true
       major_version: ${{ needs.bump.outputs.major_version }}
       minor_version: ${{ needs.bump.outputs.minor_version }}
       build_version: ${{ needs.bump.outputs.build_version }}
