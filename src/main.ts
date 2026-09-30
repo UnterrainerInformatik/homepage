@@ -1,4 +1,3 @@
-import Compression from 'compression'
 import Vue from 'vue'
 import App from './App.vue'
 
@@ -18,7 +17,6 @@ import 'prismjs/themes/prism.css'
 
 Vue.config.productionTip = false
 
-Vue.use(Compression)
 Vue.use(VueI18n)
 const i18n = new VueI18n({
   locale: 'en',
