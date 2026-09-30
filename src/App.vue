@@ -64,7 +64,9 @@ export default {
   },
 
   mounted () {
-    let lang = localStorage.getItem('language')
+    // a `lang` query parameter (links from the presserl app) wins without changing the saved choice
+    const requested = new URLSearchParams(window.location.search).get('lang')
+    let lang = ['de', 'en'].includes(requested) ? requested : localStorage.getItem('language')
     if (lang == null || lang === undefined) {
       lang = 'en'
     }

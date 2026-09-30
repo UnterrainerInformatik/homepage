@@ -59,6 +59,11 @@ const routes = [
     component: () => import('../views/cheatSheets.vue')
   },
   {
+    path: '/app/presserl/privacy',
+    name: 'presserl_privacy',
+    component: () => import('../views/presserlPrivacy.vue')
+  },
+  {
     path: '/app/about',
     name: 'about',
     component: () => import('../views/about.vue')
