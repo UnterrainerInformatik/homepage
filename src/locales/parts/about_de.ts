@@ -9,7 +9,7 @@ export default {
   personalEmailSubject: 'Frage via Homepage',
   zamgLinkDescription: 'Wir benutzen ',
   impressumTitle: 'Impressum',
-  impressum: `${''}<b style='font-size: large'>Unterrainer Informatik</b><br /><i>Offene Gesellschaft</i><br /><br /><b>Softwareentwicklung und Consulting</b><br /><br />UID-Nr: ATU66981117<br />FN: FN 374582 g<br />FB-Gericht: Landesgericht Steyr<br /><br />Sitz: 4470 Enns<br />Flurstraße 17 | Austria<br />E-Mail: office@unterrainer.info<br /><br /><i>Mitglied der WKÖ, WKOÖ<br />Bezirkshauptmannschaft Linz-Land<br />Geschäftsführende Gesellschafter: Gerald Unterrainer (50%), Günter Unterrainer (50%)<br />Unser Anliegen: Information über unsere Produkte<br /></i>`,
+  impressum: `${''}<b style='font-size: large'>Unterrainer Informatik</b><br /><br /><b>Offenlegung gemäß § 25 Mediengesetz</b><br /><br />Medieninhaber: Gerald Unterrainer (Privatperson)<br />Flurstraße 17, 4470 Enns | Austria<br />E-Mail: office@unterrainer.info<br /><br /><i>Grundlegende Richtung: private, nicht kommerzielle Webseite zur Vorstellung meiner eigenen Projekte.<br /></i>`,
   LastChanges: 'Letzte Änderungen auf dieser Seite: ',
   members: [
     {
@@ -22,8 +22,7 @@ export default {
       mail: 'wyzau@unterrainer.info'
     }, {
       title: 'LeRoi',
-      value: `${''}Kreativer Inhalt, Musik.`,
-      mail: 'leroi@unterrainer.info'
+      value: `${''}Kreativer Inhalt, Musik.`
     }, {
       title: 'Olard',
       value: `${''}Freund und Java Nerd.`,

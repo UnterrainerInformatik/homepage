@@ -1,20 +1,28 @@
 <template>
   <div v-if="items" class="d-flex flex-wrap justify-center">
     <v-card
-      style="cursor: url(/cursor_mail.png), auto"
+      :style="item.mail ? 'cursor: url(/cursor_mail.png), auto' : ''"
       class="grey lighten-4 ma-2 flex-grow-1 flex-shrink-1 d-flex flex-column"
       v-for="(item, i) in items"
       :key="i"
       min-width="285px"
       max-width="285px"
-      :href="`mailto:${item.mail}?subject=${$t(
-        'about.personalEmailSubject'
-      )}&body=${$t('about.personalEmailBody')}`"
+      :href="
+        item.mail
+          ? `mailto:${item.mail}?subject=${$t(
+              'about.personalEmailSubject'
+            )}&body=${$t('about.personalEmailBody')}`
+          : undefined
+      "
     >
       <v-card-title class="secondary justify-center text-center"
         ><span>{{ item.title }}</span>
         <v-spacer></v-spacer>
-        <span><Gravatar :email="item.mail" rating="r"></Gravatar></span
+        <span
+          ><Gravatar v-if="item.mail" :email="item.mail" rating="r"></Gravatar>
+          <v-avatar v-else tile size="80" color="grey lighten-1"
+            ><v-icon size="64" color="white">person</v-icon></v-avatar
+          ></span
       ></v-card-title>
       <v-card-text class="text-justify" v-html="item.value"></v-card-text>
       <v-spacer v-if="item.buttons"></v-spacer>
