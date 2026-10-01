@@ -1,6 +1,6 @@
 export default {
   title: 'Privacy policy of the “presserl” app',
-  description: 'Last updated: 30 September 2026',
+  description: 'Last updated: 1 October 2026',
   body: `${''}<h3>Responsible for the app</h3>
 <p>Gerald Unterrainer, 4470 Enns, Austria, e-mail: <a href="mailto:office@unterrainer.info">office@unterrainer.info</a>. Further details are in the legal notice under “About us”.</p>
 
@@ -21,7 +21,7 @@ export default {
 <p>Everything written, uploaded or changed in the app (account, articles, images, settings) is sent to and stored on the server of the connected newspaper. You log in on the login page that this newspaper provides. The operator of the respective newspaper is responsible for this data; see its legal notice and privacy policy.</p>
 
 <h3>Scanning QR codes</h3>
-<p>To scan the account slip the app uses the code scanner of Google Play services. The camera image is analysed on the device and not transmitted; the app itself gets no camera permission, only the text that was read. Google's terms apply to Google Play services.</p>
+<p>To scan the account slip the app uses the code scanner of Google Play services. The camera image is analysed on the device and not transmitted; the app itself gets no camera permission, only the text that was read. When scanning, the code scanner (Google ML Kit) sends usage and performance data to Google: device information (manufacturer, model, Android version), the app's package name and version, a device identifier for diagnostics, performance values, scanner settings and error codes. Google uses this data to run and improve the scanner and to detect misuse, transmits it encrypted and does not pass it on to third parties (<a href="https://developers.google.com/ml-kit/android-data-disclosure">ML Kit data disclosure</a>). Images and scanned content are not part of it. If you prefer not to scan, enter the newspaper's address and log in with username and password; the scanner then sends nothing. Google's terms apply to Google Play services.</p>
 
 <h3>Photos</h3>
 <p>The app reads only the photos chosen in the system photo picker or taken with the camera app, and uploads them to the newspaper's server. It asks for no permission to access all photos or files.</p>

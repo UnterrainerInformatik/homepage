@@ -1,6 +1,6 @@
 export default {
   title: 'Datenschutzerklärung der App „presserl“',
-  description: 'Stand: 30. September 2026',
+  description: 'Stand: 1. Oktober 2026',
   body: `${''}<h3>Verantwortlich für die App</h3>
 <p>Gerald Unterrainer, 4470 Enns, Österreich, E-Mail: <a href="mailto:office@unterrainer.info">office@unterrainer.info</a>. Weitere Angaben stehen im Impressum unter „Über uns“.</p>
 
@@ -21,7 +21,7 @@ export default {
 <p>Alles, was in der App geschrieben, hochgeladen oder geändert wird (Konto, Artikel, Bilder, Einstellungen), wird an den Server der verbundenen Zeitung übertragen und dort gespeichert. Die Anmeldung erfolgt auf der Anmeldeseite, die diese Zeitung vorgibt. Verantwortlich für diese Daten ist der Betreiber der jeweiligen Zeitung; Auskunft geben dessen Impressum und Datenschutzerklärung.</p>
 
 <h3>QR-Code scannen</h3>
-<p>Zum Scannen des Zugangszettels verwendet die App den Code-Scanner der Google-Play-Dienste. Das Kamerabild wird auf dem Gerät ausgewertet und nicht übertragen; die App selbst erhält keine Kamera-Berechtigung, nur den gelesenen Text. Für die Google-Play-Dienste gelten die Bestimmungen von Google.</p>
+<p>Zum Scannen des Zugangszettels verwendet die App den Code-Scanner der Google-Play-Dienste. Das Kamerabild wird auf dem Gerät ausgewertet und nicht übertragen; die App selbst erhält keine Kamera-Berechtigung, nur den gelesenen Text. Beim Scannen sendet der Code-Scanner (Google ML Kit) Nutzungs- und Leistungsdaten an Google: Geräteinformationen (Hersteller, Modell, Android-Version), Paketname und Version der App, eine Gerätekennung für Diagnosezwecke, Leistungswerte, Einstellungen und Fehlercodes des Scanners. Google verwendet diese Daten, um den Scanner zu betreiben, zu verbessern und Missbrauch zu erkennen, überträgt sie verschlüsselt und gibt sie nicht an Dritte weiter (<a href="https://developers.google.com/ml-kit/android-data-disclosure">ML-Kit-Datenoffenlegung</a>). Bilder und gelesene Inhalte gehören nicht dazu. Wer nicht scannen möchte, gibt die Adresse der Zeitung ein und meldet sich mit Benutzername und Passwort an; dann sendet der Scanner nichts. Für die Google-Play-Dienste gelten die Bestimmungen von Google.</p>
 
 <h3>Fotos</h3>
 <p>Die App liest nur die Fotos, die in der Fotoauswahl des Systems ausgewählt oder mit der Kamera-App aufgenommen werden, und lädt sie zum Server der Zeitung hoch. Eine Berechtigung für alle Fotos oder Dateien verlangt sie nicht.</p>
