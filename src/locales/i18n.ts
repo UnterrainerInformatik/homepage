@@ -12,6 +12,7 @@ import codeJavaEn from '@/locales/parts/codeJava_en'
 import gitEn from '@/locales/parts/git_en'
 import cheatSheetEn from '@/locales/parts/cheatSheets_en'
 import presserlPrivacyEn from '@/locales/parts/presserlPrivacy_en'
+import presserlAccountDeletionEn from '@/locales/parts/presserlAccountDeletion_en'
 
 import globalDe from '@/locales/global_de'
 import mainDe from '@/locales/parts/main_de'
@@ -25,6 +26,7 @@ import codeJavaDe from '@/locales/parts/codeJava_de'
 import gitDe from '@/locales/parts/git_de'
 import cheatSheetDe from '@/locales/parts/cheatSheets_de'
 import presserlPrivacyDe from '@/locales/parts/presserlPrivacy_de'
+import presserlAccountDeletionDe from '@/locales/parts/presserlAccountDeletion_de'
 
 function Lang (defaults, options = {}) {
   return Object.assign({}, defaults, options)
@@ -43,6 +45,7 @@ const en = {
   git: gitEn,
   cheatSheets: cheatSheetEn,
   presserlPrivacy: presserlPrivacyEn,
+  presserlAccountDeletion: presserlAccountDeletionEn,
   about: aboutEn
 }
 
@@ -59,6 +62,7 @@ const de = Lang(en, {
   git: gitDe,
   cheatSheets: cheatSheetDe,
   presserlPrivacy: presserlPrivacyDe,
+  presserlAccountDeletion: presserlAccountDeletionDe,
   about: aboutDe
 })
 

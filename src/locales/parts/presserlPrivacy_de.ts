@@ -30,5 +30,5 @@ export default {
 <p>Die App ist für Kinder und Jugendliche geeignet, die an einer Zeitung mitschreiben. Ihre Konten werden von der Redaktion der Zeitung angelegt; die App selbst erhebt keine Daten von ihnen.</p>
 
 <h3>Deine Rechte</h3>
-<p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Für Daten auf dem Server einer Zeitung wende dich an deren Betreiber. Beschwerden kannst du bei der österreichischen Datenschutzbehörde (<a href="https://www.dsb.gv.at">www.dsb.gv.at</a>) einbringen.</p>`
+<p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Für Daten auf dem Server einer Zeitung wende dich an deren Betreiber; wie du dein Konto löschen lässt, steht unter <a href="/app/presserl/account-deletion">Ein presserl-Konto löschen</a>. Beschwerden kannst du bei der österreichischen Datenschutzbehörde (<a href="https://www.dsb.gv.at">www.dsb.gv.at</a>) einbringen.</p>`
 }

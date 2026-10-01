@@ -30,5 +30,5 @@ export default {
 <p>The app is suitable for children and young people who write for a newspaper. Their accounts are created by the newspaper's editorial team; the app itself collects no data from them.</p>
 
 <h3>Your rights</h3>
-<p>You have the right of access, rectification, erasure, restriction of processing, data portability and objection. For data on a newspaper's server, contact its operator. You can lodge a complaint with the Austrian Data Protection Authority (<a href="https://www.dsb.gv.at">www.dsb.gv.at</a>).</p>`
+<p>You have the right of access, rectification, erasure, restriction of processing, data portability and objection. For data on a newspaper's server, contact its operator; how to have your account deleted is explained on <a href="/app/presserl/account-deletion">Deleting a presserl account</a>. You can lodge a complaint with the Austrian Data Protection Authority (<a href="https://www.dsb.gv.at">www.dsb.gv.at</a>).</p>`
 }

@@ -64,6 +64,11 @@ const routes = [
     component: () => import('../views/presserlPrivacy.vue')
   },
   {
+    path: '/app/presserl/account-deletion',
+    name: 'presserl_account_deletion',
+    component: () => import('../views/presserlAccountDeletion.vue')
+  },
+  {
     path: '/app/about',
     name: 'about',
     component: () => import('../views/about.vue')
