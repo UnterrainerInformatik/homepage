@@ -35,6 +35,7 @@ jobs:
       minor_version: ${{ needs.bump.outputs.minor_version }}
       build_version: ${{ needs.bump.outputs.build_version }}
       ovpn_enabled: true
+      runs-on: '["self-hosted","Linux","X64","babylon5"]'
     secrets:
       DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
       DEPLOY_SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
