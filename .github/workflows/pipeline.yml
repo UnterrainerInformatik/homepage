@@ -34,7 +34,6 @@ jobs:
       major_version: ${{ needs.bump.outputs.major_version }}
       minor_version: ${{ needs.bump.outputs.minor_version }}
       build_version: ${{ needs.bump.outputs.build_version }}
-      ovpn_enabled: true
       runs-on: '["self-hosted","Linux","X64","babylon5"]'
     secrets:
       DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
@@ -45,7 +44,4 @@ jobs:
       DATA_DIR: ${{ secrets.DATA_DIR }}
       DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
       DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
-      # Optional – only when OVPN is needed:
-      VPN_OVPN_FILE: ${{ secrets.VPN_OVPN_FILE }}
-      VPN_USERNAME: ${{ secrets.VPN_USERNAME }}
-      VPN_PASSWORD: ${{ secrets.VPN_PASSWORD }}
+      WG_CONFIG: ${{ secrets.WG_CONFIG }}
